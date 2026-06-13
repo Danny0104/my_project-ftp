@@ -1,0 +1,657 @@
+/* Enterprise admin module pages — KPI, insights, toolbars, kanban */
+
+.ap-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1150;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ap-modal-backdrop.is-open {
+  display: flex;
+}
+
+.ap-modal {
+  width: min(520px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 22px;
+  border-radius: 16px;
+}
+
+.ap-module {
+  --ap-module-gap: 20px;
+}
+
+/* KPI grid (shared with analytics pattern) */
+.ap-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: var(--ap-module-gap);
+}
+
+.ap-kpi-card {
+  position: relative;
+  padding: 18px 16px;
+  border-radius: var(--ap-radius-lg);
+  background: var(--ap-surface);
+  border: 1px solid var(--ap-border);
+  box-shadow: var(--ap-shadow);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+body.ap-dark .ap-kpi-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.85));
+  border-color: rgba(71, 85, 105, 0.4);
+}
+
+.ap-kpi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.ap-kpi-card--blue::before { background: radial-gradient(ellipse at 0 0, rgba(37, 99, 235, 0.2), transparent 60%); }
+.ap-kpi-card--green::before { background: radial-gradient(ellipse at 0 0, rgba(16, 185, 129, 0.18), transparent 60%); }
+.ap-kpi-card--purple::before { background: radial-gradient(ellipse at 0 0, rgba(99, 102, 241, 0.22), transparent 60%); }
+.ap-kpi-card--orange::before { background: radial-gradient(ellipse at 0 0, rgba(245, 158, 11, 0.2), transparent 60%); }
+.ap-kpi-card--amber::before { background: radial-gradient(ellipse at 0 0, rgba(251, 191, 36, 0.18), transparent 60%); }
+.ap-kpi-card--red::before { background: radial-gradient(ellipse at 0 0, rgba(239, 68, 68, 0.18), transparent 60%); }
+.ap-kpi-card--teal::before { background: radial-gradient(ellipse at 0 0, rgba(20, 184, 166, 0.18), transparent 60%); }
+
+.ap-kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.12);
+}
+
+.ap-kpi-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.ap-kpi-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.ap-kpi-card--blue .ap-kpi-card__icon { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+.ap-kpi-card--green .ap-kpi-card__icon { background: linear-gradient(135deg, #059669, #10b981); }
+.ap-kpi-card--purple .ap-kpi-card__icon { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+.ap-kpi-card--orange .ap-kpi-card__icon { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.ap-kpi-card--amber .ap-kpi-card__icon { background: linear-gradient(135deg, #d97706, #fbbf24); }
+.ap-kpi-card--red .ap-kpi-card__icon { background: linear-gradient(135deg, #dc2626, #ef4444); }
+.ap-kpi-card--teal .ap-kpi-card__icon { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+
+.ap-kpi-card__trend {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.ap-kpi-card__value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.ap-kpi-card__suffix {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ap-muted);
+}
+
+.ap-kpi-card__label {
+  font-size: 13px;
+  color: var(--ap-muted);
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Insights */
+.ap-insights {
+  padding: 18px 20px;
+  margin-bottom: var(--ap-module-gap);
+  border-radius: var(--ap-radius-lg);
+}
+
+.ap-insights__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.ap-insights__head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ap-insights__head h2 i { color: var(--ap-indigo); }
+
+.ap-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.ap-insight {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-bg);
+}
+
+.ap-insight__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.ap-insight--positive .ap-insight__icon { background: rgba(16, 185, 129, 0.15); color: var(--ap-success); }
+.ap-insight--warning .ap-insight__icon { background: rgba(245, 158, 11, 0.15); color: var(--ap-warning); }
+.ap-insight--neutral .ap-insight__icon { background: rgba(37, 99, 235, 0.12); color: var(--ap-primary); }
+
+.ap-insight p { margin: 0; font-size: 13px; line-height: 1.45; }
+
+.ap-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--ap-bg);
+  border: 1px solid var(--ap-border);
+  color: var(--ap-muted);
+}
+
+/* Module toolbar */
+.ap-module-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: var(--ap-module-gap);
+  border-radius: var(--ap-radius-lg);
+}
+
+.ap-module-toolbar__search {
+  flex: 1 1 220px;
+  position: relative;
+}
+
+.ap-module-toolbar__search i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ap-muted);
+  font-size: 13px;
+}
+
+.ap-module-search {
+  width: 100%;
+  border: 1px solid var(--ap-border);
+  border-radius: 12px;
+  padding: 10px 14px 10px 40px;
+  background: var(--ap-surface);
+  color: var(--ap-text);
+  font-size: 14px;
+}
+
+.ap-module-toolbar__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ap-view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--ap-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ap-view-toggle button {
+  border: none;
+  background: var(--ap-surface);
+  color: var(--ap-muted);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.ap-view-toggle button.is-active {
+  background: var(--ap-primary);
+  color: #fff;
+}
+
+/* Executive dashboard */
+.ap-exec-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: var(--ap-module-gap);
+  flex-wrap: wrap;
+}
+
+.ap-exec-hero h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.ap-exec-hero p {
+  margin: 6px 0 0;
+  color: var(--ap-muted);
+  font-size: 14px;
+}
+
+.ap-health-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.ap-dash-grid-2 {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--ap-module-gap);
+  margin-bottom: var(--ap-module-gap);
+}
+
+.ap-dash-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ap-module-gap);
+  margin-bottom: var(--ap-module-gap);
+}
+
+.ap-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ap-panel-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ap-chart-box {
+  position: relative;
+  height: 280px;
+  max-height: 320px;
+  overflow: hidden;
+}
+
+.ap-chart-box canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Funnel pipeline (enhanced) */
+.ap-funnel {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.ap-funnel-step {
+  text-align: center;
+  padding: 14px 8px;
+  border-radius: 12px;
+  background: var(--ap-bg);
+  border: 1px solid var(--ap-border);
+  transition: transform 0.2s ease;
+}
+
+.ap-funnel-step:hover { transform: translateY(-2px); }
+
+.ap-funnel-step h4 {
+  margin: 0 0 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ap-muted);
+}
+
+.ap-funnel-step strong {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+/* Kanban ATS */
+.ap-kanban {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: var(--ap-module-gap);
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.ap-kanban-col {
+  min-width: 150px;
+  background: var(--ap-bg);
+  border: 1px solid var(--ap-border);
+  border-radius: 14px;
+  padding: 12px;
+  max-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-kanban-col h4 {
+  margin: 0 0 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ap-muted);
+}
+
+.ap-kanban-count {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.ap-kanban-bar {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ap-border);
+  overflow: hidden;
+}
+
+.ap-kanban-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ap-primary), var(--ap-indigo));
+  border-radius: inherit;
+}
+
+/* Timeline */
+.ap-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ap-timeline-item {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ap-border);
+}
+
+.ap-timeline-item:last-child { border-bottom: none; }
+
+.ap-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ap-primary);
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.ap-timeline-body strong { display: block; font-size: 13px; }
+.ap-timeline-body span { font-size: 12px; color: var(--ap-muted); }
+
+/* Quick actions grid */
+.ap-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ap-quick-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-bg);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.ap-quick-card:hover {
+  border-color: var(--ap-primary);
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+.ap-quick-card i {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--ap-primary);
+}
+
+/* Settings layout */
+.ap-settings-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--ap-module-gap);
+}
+
+.ap-settings-nav {
+  padding: 12px;
+  border-radius: var(--ap-radius-lg);
+  position: sticky;
+  top: calc(var(--ap-topbar-h) + 16px);
+}
+
+.ap-settings-nav a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--ap-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ap-settings-nav a.is-active,
+.ap-settings-nav a:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--ap-primary);
+}
+
+@media (max-width: 1200px) {
+  .ap-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .ap-dash-grid-2 { grid-template-columns: 1fr; }
+  .ap-dash-grid-3 { grid-template-columns: 1fr; }
+  .ap-funnel { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Kanban mini cards */
+.ap-kanban-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.ap-kanban-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--ap-surface);
+  border: 1px solid var(--ap-border);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ap-kanban-card:hover {
+  border-color: var(--ap-primary);
+  transform: translateY(-1px);
+  color: inherit;
+}
+
+.ap-kanban-card strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.ap-kanban-card span {
+  font-size: 11px;
+  color: var(--ap-muted);
+}
+
+.ap-kanban-more {
+  font-size: 11px;
+  color: var(--ap-muted);
+  text-align: center;
+  padding: 6px;
+}
+
+/* Grid / list view */
+.ap-card-grid.ap-view--list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ap-card-grid.ap-view--list .ap-entity-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.ap-card-grid.ap-view--list .ap-entity-card-head {
+  margin-bottom: 0;
+}
+
+.ap-card-grid.ap-view--list .ap-entity-details,
+.ap-card-grid.ap-view--list .ap-entity-actions {
+  display: none;
+}
+
+.ap-module-panel {
+  padding: 18px 20px;
+  margin-bottom: var(--ap-module-gap);
+}
+
+.ap-module-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--ap-module-gap);
+  flex-wrap: wrap;
+}
+
+.ap-module-tabs button,
+.ap-module-tabs a {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--ap-border);
+  background: var(--ap-surface);
+  color: var(--ap-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ap-module-tabs .is-active {
+  background: var(--ap-primary);
+  border-color: var(--ap-primary);
+  color: #fff;
+}
+
+.ap-org-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.ap-org-card {
+  padding: 18px;
+  border-radius: var(--ap-radius-lg);
+  border: 1px solid var(--ap-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ap-org-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ap-shadow);
+}
+
+.ap-approval-queue .ap-widget-item {
+  border-left: 3px solid var(--ap-warning);
+}
+
+.ap-sla-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--ap-warning);
+}
+
+@media (max-width: 768px) {
+  .ap-kpi-grid { grid-template-columns: 1fr; }
+  .ap-funnel { grid-template-columns: repeat(2, 1fr); }
+  .ap-settings-layout { grid-template-columns: 1fr; }
+  .ap-kanban { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+}

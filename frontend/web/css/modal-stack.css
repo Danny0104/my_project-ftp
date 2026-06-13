@@ -1,0 +1,157 @@
+/**
+ * Global modal / overlay stacking for dashboard shells.
+ * Bootstrap backdrops attach to <body> while modals often render inside .ftp-content,
+ * which traps them below the backdrop — portal JS moves modals to body; these rules
+ * enforce a consistent z-index ladder above sidebars and headers.
+ */
+
+:root {
+    --ft-modal-z-drawer-backdrop: 1035;
+    --ft-modal-z-drawer: 1040;
+    /* Above topbars (1030), org sidebar overlay (1090), and message hubs (1100) */
+    --ft-modal-z-backdrop: 1140;
+    --ft-modal-z-modal: 1150;
+    --ft-modal-z-org-overlay: 1150;
+    --ft-modal-z-error: 1160;
+}
+
+/* Bootstrap modals (portaled to body) */
+body.ftp-dashboard-layout .modal-backdrop,
+body.org-dashboard-layout .modal-backdrop,
+body.ap-admin-layout .modal-backdrop,
+body.site-public-page .modal-backdrop {
+    z-index: var(--ft-modal-z-backdrop) !important;
+}
+
+body.ftp-dashboard-layout .modal.ft-modal-stack,
+body.org-dashboard-layout .modal.ft-modal-stack,
+body.ap-admin-layout .modal.ft-modal-stack,
+body.site-public-page .modal.ft-modal-stack {
+    z-index: var(--ft-modal-z-modal) !important;
+}
+
+.modal.ft-modal-stack .modal-dialog {
+    transition: transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.28s ease;
+}
+
+.modal.ft-modal-stack:not(.show) .modal-dialog {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+}
+
+.modal.ft-modal-stack.show .modal-dialog {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.modal.ft-modal-stack .modal-content {
+    max-height: min(90vh, 900px);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal.ft-modal-stack .modal-body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom student drawers — below Bootstrap modals */
+.spa-drawer-backdrop,
+.sp-om-filter-backdrop,
+.msg-mobile-backdrop,
+.sp-msg-mobile-backdrop,
+.notification-hub .sp-msg-mobile-backdrop {
+    z-index: var(--ft-modal-z-drawer-backdrop) !important;
+}
+
+.spa-drawer,
+.sp-om-filter-drawer {
+    z-index: var(--ft-modal-z-drawer) !important;
+}
+
+/* Organization custom modals */
+.org-modal-backdrop {
+    z-index: var(--ft-modal-z-org-overlay) !important;
+}
+
+.org-modal-backdrop.is-open {
+    display: flex;
+    animation: ftModalBackdropIn 0.22s ease both;
+}
+
+.org-modal-backdrop.is-open .org-modal {
+    animation: ftModalDialogIn 0.28s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+@keyframes ftModalBackdropIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes ftModalDialogIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Fallback when a trigger targets a missing modal */
+.ft-modal-load-error {
+    position: fixed;
+    inset: 0;
+    z-index: var(--ft-modal-z-error);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: ftModalBackdropIn 0.22s ease both;
+}
+
+.ft-modal-load-error[hidden] {
+    display: none !important;
+}
+
+.ft-modal-load-error__panel {
+    width: min(420px, 100%);
+    background: #fff;
+    color: #0f172a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.2);
+    animation: ftModalDialogIn 0.28s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+.ft-modal-load-error__panel h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.ft-modal-load-error__panel p {
+    margin: 0 0 1rem;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+body.ft-shell-modal-open {
+    overflow: hidden !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal.ft-modal-stack .modal-dialog,
+    .org-modal-backdrop.is-open,
+    .org-modal-backdrop.is-open .org-modal,
+    .ft-modal-load-error,
+    .ft-modal-load-error__panel {
+        animation: none !important;
+        transition: none !important;
+    }
+}

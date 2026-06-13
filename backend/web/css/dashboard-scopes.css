@@ -1,0 +1,42 @@
+/**
+ * Dashboard CSS scoping — prevents panel style leakage across student/org/admin shells.
+ */
+
+.student-dashboard,
+.student-dashboard-scope {
+  --ftp-panel: student;
+}
+
+.organization-dashboard,
+.organization-dashboard-scope {
+  --ftp-panel: organization;
+}
+
+.admin-dashboard,
+.admin-dashboard-scope {
+  --ftp-panel: admin;
+}
+
+/* Isolate typography inside panel roots */
+.student-dashboard .ftp-content,
+.student-dashboard-scope .ftp-content {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+}
+
+.organization-dashboard .org-main,
+.organization-dashboard-scope .org-main {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+}
+
+/* Prevent Bootstrap .container from collapsing dashboard flex shells */
+.ftp-dashboard-layout .ftp-app,
+.org-dashboard-layout .org-app,
+.ap-admin-layout .ap-app {
+  min-width: 0;
+}
+
+.ftp-dashboard-layout .container,
+.org-dashboard-layout .container,
+.ap-admin-layout .container {
+  max-width: 100%;
+}

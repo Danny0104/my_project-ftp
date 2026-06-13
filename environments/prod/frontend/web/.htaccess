@@ -1,0 +1,9 @@
+RewriteEngine on
+
+# Set RewriteBase to your public URL path, e.g. / or /my_project/frontend/web/
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . index.php

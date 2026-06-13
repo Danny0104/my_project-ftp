@@ -1,0 +1,9 @@
+RewriteEngine on
+
+# XAMPP subdirectory — adjust if the project folder name or path changes
+RewriteBase /my_project/backend/web/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . index.php

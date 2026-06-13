@@ -1,0 +1,104 @@
+/**
+ * Light-theme-only enterprise refinements.
+ * Scoped to .theme-light / data-theme=light — dark theme unaffected.
+ */
+
+html.theme-light .sp-glass,
+html[data-theme="light"] .sp-glass,
+html.theme-light .spa-card,
+html[data-theme="light"] .spa-card,
+html.theme-light .scc-glass,
+html[data-theme="light"] .scc-glass,
+html.theme-light .org-card,
+html[data-theme="light"] .org-card,
+html.theme-light .org-app-card,
+html[data-theme="light"] .org-app-card,
+html.theme-light .premium-card,
+html[data-theme="light"] .premium-card,
+html.theme-light .ftp-opp-card,
+html[data-theme="light"] .ftp-opp-card,
+html.theme-light .card,
+html[data-theme="light"] .card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-image: none !important;
+}
+
+html.theme-light .spa-card::before,
+html[data-theme="light"] .spa-card::before,
+html.theme-light .spa-card::after,
+html[data-theme="light"] .spa-card::after,
+html.theme-light .sp-opp-card::before,
+html[data-theme="light"] .sp-opp-card::before,
+html.theme-light .org-card::before,
+html[data-theme="light"] .org-card::before,
+html.theme-light .premium-card::before,
+html[data-theme="light"] .premium-card::before {
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+html.theme-light .spa-card-glow,
+html[data-theme="light"] .spa-card-glow,
+html.theme-light .scc-ambient,
+html[data-theme="light"] .scc-ambient,
+html.theme-light .spa-orb,
+html[data-theme="light"] .spa-orb,
+html.theme-light .spa-mesh,
+html[data-theme="light"] .spa-mesh,
+html.theme-light .scc-mesh,
+html[data-theme="light"] .scc-mesh {
+    display: none !important;
+}
+
+html.theme-light [class*="gradient"],
+html[data-theme="light"] [class*="gradient"] {
+    background-image: none !important;
+}
+
+html.theme-light .sp-btn-primary,
+html[data-theme="light"] .sp-btn-primary,
+html.theme-light .spa-btn--primary,
+html[data-theme="light"] .spa-btn--primary,
+html.theme-light .org-btn-primary,
+html[data-theme="light"] .org-btn-primary,
+html.theme-light .ap-btn-primary,
+html[data-theme="light"] .ap-btn-primary {
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+html.theme-light .spa-hero,
+html[data-theme="light"] .spa-hero,
+html.theme-light .scc-hero,
+html[data-theme="light"] .scc-hero,
+html.theme-light .org-hero,
+html[data-theme="light"] .org-hero,
+html.theme-light .pm-hero__overlay,
+html[data-theme="light"] .pm-hero__overlay,
+html.theme-light .pm-hero__mesh,
+html[data-theme="light"] .pm-hero__mesh {
+    background-image: none !important;
+}
+
+html.theme-light .pm-hero__orb,
+html[data-theme="light"] .pm-hero__orb {
+    display: none !important;
+}
+
+html.theme-light .ftp-sidebar::before,
+html[data-theme="light"] .ftp-sidebar::before,
+html.theme-light .org-sidebar::before,
+html[data-theme="light"] .org-sidebar::before {
+    display: none !important;
+}
+
+html.theme-light .sp-opp-card:hover,
+html[data-theme="light"] .sp-opp-card:hover,
+html.theme-light .spa-card:hover,
+html[data-theme="light"] .spa-card:hover,
+html.theme-light .org-card:hover,
+html[data-theme="light"] .org-card:hover {
+    transform: none !important;
+}

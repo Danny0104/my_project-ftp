@@ -1,0 +1,36 @@
+/**
+ * Field Training Platform — shared design tokens (variables only).
+ * Safe to load on any dashboard; no component rules.
+ */
+:root {
+    --ft-bp-sm: 576px;
+    --ft-bp-md: 768px;
+    --ft-bp-lg: 992px;
+    --ft-bp-xl: 1200px;
+
+    --ft-z-base: 0;
+    --ft-z-raised: 10;
+    --ft-z-sticky: 20;
+    --ft-z-header: 30;
+    --ft-z-sidebar: 40;
+    --ft-z-overlay: 50;
+    --ft-z-drawer: 60;
+    --ft-z-dropdown: 70;
+    --ft-z-modal: 80;
+    --ft-z-toast: 90;
+
+    --ft-sidebar-w-student: 240px;
+    --ft-sidebar-w-org: 280px;
+    --ft-sidebar-w-admin: 260px;
+    --ft-topbar-h: 64px;
+
+    --ft-space-1: 4px;
+    --ft-space-2: 8px;
+    --ft-space-3: 12px;
+    --ft-space-4: 16px;
+    --ft-space-5: 24px;
+    --ft-space-6: 32px;
+
+    --ft-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ft-shell-transition: 0.22s var(--ft-ease-out);
+}

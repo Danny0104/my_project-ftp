@@ -1,0 +1,315 @@
+/* Internship create/edit modal — layout & academic field selector */
+
+#orgPositionModal.ft-modal-stack {
+  z-index: var(--ft-modal-z-modal, 1150) !important;
+}
+
+#orgPositionModal .org-position-form-modal {
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--org-sidebar, #fff);
+  border: 1px solid var(--org-border, rgba(0, 0, 0, 0.1));
+}
+
+#orgPositionModal .modal-header,
+#orgPositionModal .modal-footer {
+  flex-shrink: 0;
+  border-color: var(--org-border, rgba(0, 0, 0, 0.08));
+}
+
+#orgPositionModal .modal-body.org-position-form-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(90vh - 130px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#orgPositionModal .position-form .row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+#orgPositionModal .position-form [class*="col-"] {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-width: 0;
+}
+
+#orgPositionModal .position-form .form-control,
+#orgPositionModal .position-form .form-select {
+  max-width: 100%;
+}
+
+/* Academic field multi-select */
+.org-field-select {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  isolation: isolate;
+}
+
+.org-field-select__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.org-field-select__search {
+  flex: 1 1 180px;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--org-border, rgba(0, 0, 0, 0.12));
+  background: var(--org-surface, #f8fafc);
+  color: var(--org-text, #0f172a);
+  font-size: 14px;
+}
+
+.org-field-select__search:focus {
+  outline: none;
+  border-color: #2f76ff;
+  box-shadow: 0 0 0 3px rgba(47, 118, 255, 0.15);
+}
+
+.org-field-select__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.org-field-select__btn {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--org-border, rgba(0, 0, 0, 0.12));
+  background: var(--org-surface, #f8fafc);
+  color: var(--org-text-2, #475569);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.org-field-select__btn:hover {
+  border-color: #2f76ff;
+  color: #2f76ff;
+}
+
+.org-field-select__count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--org-text-2, #64748b);
+  white-space: nowrap;
+}
+
+.org-field-select__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 36px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px dashed var(--org-border, rgba(0, 0, 0, 0.12));
+  background: rgba(47, 118, 255, 0.04);
+}
+
+.org-field-select__tags:empty::before {
+  content: 'No fields selected';
+  color: var(--org-text-3, #94a3b8);
+  font-size: 13px;
+}
+
+.org-field-select__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(47, 118, 255, 0.14);
+  border: 1px solid rgba(47, 118, 255, 0.28);
+  color: var(--org-text, #0f172a);
+  font-size: 12px;
+  font-weight: 600;
+  max-width: 100%;
+}
+
+.org-field-select__tag span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.org-field-select__tag-remove {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.org-field-select__tag-remove:hover {
+  opacity: 1;
+}
+
+.org-field-select__panel {
+  position: relative;
+  z-index: 2;
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--org-border, rgba(0, 0, 0, 0.12));
+  border-radius: 12px;
+  background: var(--org-surface, #fff);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.org-field-select__group {
+  border-bottom: 1px solid var(--org-border, rgba(0, 0, 0, 0.06));
+}
+
+.org-field-select__group:last-child {
+  border-bottom: none;
+}
+
+.org-field-select__group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+body.org-body .org-field-select__group-head {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.org-field-select__group-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--org-text, #0f172a);
+}
+
+.org-field-select__group-meta {
+  font-size: 11px;
+  color: var(--org-text-3, #94a3b8);
+  font-weight: 600;
+}
+
+.org-field-select__group-toggle {
+  border: none;
+  background: transparent;
+  color: var(--org-text-2, #64748b);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.org-field-select__group-body {
+  padding: 6px 8px 10px;
+}
+
+.org-field-select__group.is-collapsed .org-field-select__group-body {
+  display: none;
+}
+
+.org-field-select__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--org-text, #0f172a);
+}
+
+.org-field-select__option:hover {
+  background: rgba(47, 118, 255, 0.08);
+}
+
+.org-field-select__option input {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.org-field-select__option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.org-field-select__empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--org-text-3, #94a3b8);
+  font-size: 13px;
+}
+
+.org-field-select.is-invalid .org-field-select__panel {
+  border-color: #ef4444;
+}
+
+.org-field-select__error {
+  display: none;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.org-field-select.is-invalid .org-field-select__error {
+  display: block;
+}
+
+.org-field-select__inputs {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  #orgPositionModal .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+
+  #orgPositionModal .position-form [class*="col-md-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .org-field-select__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .org-field-select__actions {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #orgPositionModal .position-form [class*="col-md-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

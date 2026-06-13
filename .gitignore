@@ -1,0 +1,70 @@
+# Yii console commands
+/yii
+/yii_test
+/yii_test.bat
+
+# Composer
+/vendor
+composer.phar
+composer-setup.php
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE / editor
+.idea
+.vscode
+*.swp
+*.swo
+*~
+nbproject
+.buildpath
+.project
+.settings
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PHPUnit / Codeception
+phpunit.phar
+/phpunit.xml
+/codeception.yml
+
+# Vagrant
+/.vagrant
+
+# Node (root + subprojects)
+node_modules/
+/realtime/chat-server/node_modules/
+
+# Yii runtime (logs, cache, debug, OCR storage)
+/backend/runtime/
+/frontend/runtime/
+/console/runtime/
+/common/runtime/
+
+# Generated / published web assets
+/backend/web/assets/
+/frontend/web/assets/
+
+# User uploads (never commit user content)
+/frontend/web/uploads/
+
+# Yii init-generated entry files (copied from environments/)
+/frontend/web/index.php
+/frontend/web/index-test.php
+/frontend/web/robots.txt
+/backend/web/index.php
+/backend/web/index-test.php
+/backend/web/robots.txt
+
+# Logs (belt-and-suspenders)
+*.log
+
+# Optional: local override at repo root (XAMPP redirect helper)
+# /index.php

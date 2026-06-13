@@ -1,0 +1,305 @@
+/**
+ * Organization messages — isolated grid layout (no overlap).
+ * Loaded after org-messages-hub.css; overrides layout + student-platform conflicts.
+ */
+
+/* ── Main 2-column grid: inbox | conversation ── */
+.org-dashboard-layout .org-msg-layout.org-messages-hub.sp-messages-hub:not(.msg-workspace) {
+    display: grid !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    isolation: isolate;
+    contain: layout style;
+    background: var(--org-surface) !important;
+    border: 1px solid var(--org-border);
+    border-radius: 16px;
+    box-shadow: var(--org-shadow-soft);
+}
+
+/* Remove decorative overlay that caused transparency bleed */
+.org-msg-layout.org-messages-hub::before {
+    display: none !important;
+}
+
+.org-msg-layout > * {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+}
+
+/* ── Inbox column (fixed 360px, never collapses) ── */
+.org-msg-inbox.org-msg-sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    background: var(--org-surface-2) !important;
+    border-right: 1px solid var(--org-border);
+    z-index: 2;
+}
+
+.org-dashboard-layout .org-msg-layout .sp-conv-filters {
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    flex-wrap: wrap;
+}
+
+.org-msg-inbox .org-msg-conv-list,
+.org-msg-inbox .sp-conv-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+}
+
+/* ── Conversation column (chat + optional context rail) ── */
+.org-msg-layout.msg-workspace .org-msg-conversation-panel {
+    display: contents !important;
+}
+
+/* ── Chat panel ── */
+.org-msg-chat {
+    grid-column: 1;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--org-surface) !important;
+}
+
+.org-msg-chat-header {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 100%;
+    background: var(--org-surface) !important;
+    border-bottom: 1px solid var(--org-border);
+}
+
+.org-msg-messages-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.org-msg-chat-body {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 12px 16px 8px;
+    box-sizing: border-box;
+}
+
+.org-msg-thread {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.org-msg-thread-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.org-msg-chat .msg-bubble {
+    max-width: min(100%, 420px);
+    box-sizing: border-box;
+}
+
+.org-msg-composer-wrap {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: var(--org-surface-2) !important;
+    border-top: 1px solid var(--org-border);
+    padding: 10px 14px 12px;
+}
+
+.org-msg-composer-inner.msg-composer {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    grid-template-columns: unset !important;
+}
+
+.org-msg-composer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.org-msg-composer-input {
+    flex: 1 1 auto;
+    min-width: 0 !important;
+    max-width: 100%;
+    width: auto !important;
+    box-sizing: border-box;
+}
+
+.org-msg-composer-icon {
+    flex: 0 0 auto;
+}
+
+.org-msg-quick-replies {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ── Context rail (inside conversation panel, not main grid) ── */
+.org-msg-context-panel {
+    grid-column: 1;
+    display: none;
+    min-width: 0;
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex-direction: column;
+    background: var(--org-surface-2) !important;
+    border-left: 1px solid var(--org-border);
+}
+
+@media (min-width: 1280px) {
+    .org-msg-context-panel {
+        grid-column: 2;
+        display: flex;
+    }
+}
+
+.org-msg-context-panel .org-msg-context-inner {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 12px 12px;
+}
+
+/* Shell height */
+.org-msg-shell {
+    flex: 1 1 auto;
+    min-height: 280px;
+    height: calc(100dvh - var(--org-topbar-h, 64px) - 11rem);
+    max-height: calc(100dvh - var(--org-topbar-h, 64px) - 11rem);
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+/* ── Tablet: collapsible inbox overlay ── */
+@media (max-width: 1024px) {
+    .org-dashboard-layout .org-msg-layout.org-messages-hub.sp-messages-hub {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .org-msg-inbox.org-msg-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(360px, 92vw) !important;
+        min-width: min(360px, 92vw) !important;
+        max-width: min(360px, 92vw) !important;
+        z-index: 1050;
+        transform: translateX(-100%);
+        transition: transform 0.28s ease;
+        box-shadow: 8px 0 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .org-msg-inbox.org-msg-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .org-msg-conversation-panel {
+        grid-column: 1;
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .org-msg-context-panel {
+        display: none !important;
+    }
+
+    .org-msg-mobile-inbox {
+        display: inline-flex !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .org-msg-shell {
+        height: calc(100dvh - var(--org-topbar-h, 64px) - 9rem);
+        max-height: calc(100dvh - var(--org-topbar-h, 64px) - 9rem);
+    }
+
+    .org-msg-chat-body {
+        padding: 10px 12px 6px;
+    }
+
+    .org-msg-composer-wrap {
+        padding: 8px 10px 10px;
+    }
+}
+
+/* Kill student-platform 3-column + fixed heights on org hub */
+.org-dashboard-layout .notification-hub .org-msg-layout.sp-messages-hub {
+    grid-template-columns: 360px minmax(0, 1fr) !important;
+}
+
+.org-dashboard-layout .org-msg-layout .sp-conv-item:not(.org-msg-conv) {
+    min-width: 0;
+}
+
+.org-dashboard-layout .org-msg-layout .sp-conv-body {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.org-dashboard-layout .org-msg-layout .sp-conv-title,
+.org-dashboard-layout .org-msg-layout .sp-conv-preview,
+.org-dashboard-layout .org-msg-layout .sp-conv-time,
+.org-dashboard-layout .org-msg-layout .org-msg-role {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}

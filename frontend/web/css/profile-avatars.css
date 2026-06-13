@@ -1,0 +1,159 @@
+/* Profile avatars — organization logos & student photos */
+.ft-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    background: #f1f5f9;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.ft-avatar--round,
+.org-logo.ft-avatar,
+.org-avatar.ft-avatar,
+.ftp-profile-ring-avatar .ft-avatar,
+.ftp-avatar .ft-avatar {
+    border-radius: 50%;
+}
+
+.ft-avatar__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.ft-avatar__img--contain {
+    object-fit: contain;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.ft-avatar--org.ft-avatar--has-image {
+    background: #fff;
+}
+
+.ft-avatar--placeholder {
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.72em;
+    line-height: 1;
+}
+
+.ft-avatar--org.ft-avatar--placeholder {
+    background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+    color: #3730a3;
+}
+
+.ft-avatar--student.ft-avatar--placeholder {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    color: #047857;
+}
+
+.ft-avatar--placeholder .fas {
+    position: absolute;
+    opacity: 0.12;
+    font-size: 1.6em;
+}
+
+.ft-avatar__initials {
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.02em;
+}
+
+.ft-avatar--xs { font-size: 11px; width: 32px; height: 32px; }
+.ft-avatar--sm { font-size: 13px; width: 48px; height: 48px; }
+.ft-avatar--md { font-size: 15px; width: 64px; height: 64px; }
+.ft-avatar--lg { font-size: 18px; width: 128px; height: 128px; }
+.ft-avatar--xl { font-size: 22px; width: 200px; height: 200px; }
+
+.ft-avatar--fill {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Legacy slot wrappers */
+.org-logo > .ft-avatar,
+.org-avatar > .ft-avatar,
+.pm-card__logo > .ft-avatar,
+.scc-opp-logo > .ft-avatar,
+.spa-card-logo > .ft-avatar,
+.sp-app-logo > .ft-avatar,
+.sp-at-kanban-logo > .ft-avatar,
+.spa-rec-logo > .ft-avatar,
+.sp-om-logo > .ft-avatar,
+.pd-org-logo > .ft-avatar,
+.sp-conv-avatar > .ft-avatar,
+.org-avatar-lg > .ft-avatar,
+.sp-set-avatar > .ft-avatar,
+.sp-prof-avatar-inner > .ft-avatar,
+.sp-prof-app-logo > .ft-avatar,
+.ftp-profile-ring-avatar > .ft-avatar {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+    border-radius: inherit;
+}
+
+.sp-conv-avatar.ft-avatar,
+.sp-conv-avatar .ft-avatar {
+    border-radius: 50%;
+}
+
+.sp-notif-card-icon .ft-avatar {
+    border-radius: 50%;
+    border: none;
+}
+
+.ft-avatar--has-image .ft-avatar__fallback {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.ft-avatar--broken .ft-avatar__fallback,
+.ft-avatar--placeholder .ft-avatar__fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sp-set-photo-upload {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.sp-set-photo-preview {
+    flex-shrink: 0;
+}
+
+.sp-set-photo-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.sp-set-photo-actions small {
+    color: var(--sp-text-muted, #64748b);
+}

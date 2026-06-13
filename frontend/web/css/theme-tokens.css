@@ -1,0 +1,235 @@
+/**
+ * Dual theme design tokens — light (enterprise white) + dark (restored).
+ * Switch via html/body .theme-light | .theme-dark and data-theme attribute.
+ *
+ * Semantic aliases (use in components):
+ *   var(--bg) var(--card) var(--text) var(--border) var(--primary)
+ */
+
+/* ==========================================================================
+   LIGHT THEME (default)
+   ========================================================================== */
+
+:root,
+html.theme-light,
+html[data-theme="light"] {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --muted: #94a3b8;
+    --border: #e2e8f0;
+    --border-strong: #e5e7eb;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-soft: #eff6ff;
+    --primary-contrast: #ffffff;
+
+    --theme-bg: var(--bg);
+    --theme-surface: var(--card);
+    --theme-surface-2: #f1f5f9;
+    --theme-surface-soft: #f1f5f9;
+    --theme-surface-glass: #ffffff;
+    --theme-surface-glass-2: #ffffff;
+    --theme-text: var(--text);
+    --theme-text-secondary: var(--text-secondary);
+    --theme-muted: var(--muted);
+    --theme-border: var(--border);
+    --theme-border-strong: var(--border-strong);
+    --theme-primary: var(--primary);
+    --theme-primary-hover: var(--primary-hover);
+    --theme-primary-soft: var(--primary-soft);
+    --theme-primary-contrast: var(--primary-contrast);
+    --theme-success: #16a34a;
+    --theme-warning: #d97706;
+    --theme-error: #dc2626;
+
+    --theme-shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --theme-shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.05);
+    --theme-shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+    --theme-shadow-soft: var(--theme-shadow-sm);
+
+    --theme-radius-sm: 8px;
+    --theme-radius-md: 10px;
+    --theme-radius-lg: 14px;
+    --theme-transition: 200ms ease;
+
+    --theme-sidebar-bg-1: #ffffff;
+    --theme-sidebar-bg-2: #ffffff;
+    --theme-sidebar-border: var(--border-strong);
+    --theme-sidebar-text: var(--text);
+    --theme-sidebar-text-secondary: var(--text-secondary);
+    --theme-sidebar-link-hover: #f8fafc;
+    --theme-sidebar-nav-section: var(--muted);
+    --theme-ring: rgba(37, 99, 235, 0.35);
+    --theme-ring-soft: var(--primary-soft);
+
+    --es-card-bg: var(--card);
+    --es-card-border: var(--border-strong);
+    --es-card-radius: 14px;
+    --es-card-shadow: var(--theme-shadow-sm);
+    --es-btn-primary-bg: var(--primary);
+    --es-btn-primary-hover: var(--primary-hover);
+    --es-btn-primary-color: var(--primary-contrast);
+    --es-btn-secondary-bg: var(--card);
+    --es-btn-secondary-border: var(--border-strong);
+    --es-btn-secondary-hover: var(--bg);
+    --es-btn-soft-bg: #f1f5f9;
+    --es-btn-soft-hover: var(--border);
+    --es-btn-radius: 10px;
+
+    /* Button label colors (WCAG contrast pairs) */
+    --btn-primary-text: var(--primary-contrast);
+    --btn-secondary-text: var(--text);
+    --btn-outline-text: var(--text);
+    --btn-ghost-text: var(--text);
+    --btn-success-text: #ffffff;
+    --btn-warning-text: #ffffff;
+    --btn-danger-text: #ffffff;
+    --btn-success-bg: var(--theme-success);
+    --btn-warning-bg: var(--theme-warning);
+    --btn-danger-bg: var(--theme-error);
+    --btn-muted-text: var(--text-secondary);
+
+    --es-flat-ui: 1;
+    --es-enable-glass: 0;
+    --es-enable-gradient: 0;
+
+    color-scheme: light;
+}
+
+/* ==========================================================================
+   DARK THEME (restored)
+   ========================================================================== */
+
+html.theme-dark,
+html[data-theme="dark"] {
+    --bg: #050816;
+    --card: #111827;
+    --text: #ffffff;
+    --text-secondary: #94a3b8;
+    --muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.12);
+    --primary: #4f46e5;
+    --primary-hover: #6366f1;
+    --primary-soft: rgba(79, 70, 229, 0.15);
+    --primary-contrast: #ffffff;
+
+    --theme-bg: var(--bg);
+    --theme-surface: var(--card);
+    --theme-surface-2: #172033;
+    --theme-surface-soft: #172033;
+    --theme-surface-glass: rgba(17, 24, 39, 0.66);
+    --theme-surface-glass-2: rgba(17, 24, 39, 0.92);
+    --theme-text: var(--text);
+    --theme-text-secondary: var(--text-secondary);
+    --theme-muted: var(--muted);
+    --theme-border: var(--border);
+    --theme-border-strong: var(--border-strong);
+    --theme-primary: var(--primary);
+    --theme-primary-hover: var(--primary-hover);
+    --theme-primary-soft: var(--primary-soft);
+    --theme-primary-contrast: var(--primary-contrast);
+    --theme-success: #10b981;
+    --theme-warning: #f59e0b;
+    --theme-error: #ef4444;
+
+    --theme-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --theme-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.28);
+    --theme-shadow-md: 0 18px 45px rgba(0, 0, 0, 0.4);
+    --theme-shadow-soft: var(--theme-shadow-md);
+
+    --theme-sidebar-bg-1: #0b1120;
+    --theme-sidebar-bg-2: #111827;
+    --theme-sidebar-border: var(--border);
+    --theme-sidebar-text: var(--text);
+    --theme-sidebar-text-secondary: var(--text-secondary);
+    --theme-sidebar-link-hover: rgba(255, 255, 255, 0.06);
+    --theme-sidebar-nav-section: var(--muted);
+    --theme-ring: rgba(79, 70, 229, 0.35);
+    --theme-ring-soft: rgba(79, 70, 229, 0.14);
+
+    --es-card-bg: var(--theme-surface-glass);
+    --es-card-border: var(--border);
+    --es-card-radius: 14px;
+    --es-card-shadow: var(--theme-shadow-soft);
+    --es-btn-primary-bg: var(--primary);
+    --es-btn-primary-hover: var(--primary-hover);
+    --es-btn-primary-color: var(--primary-contrast);
+    --es-btn-secondary-bg: rgba(255, 255, 255, 0.04);
+    --es-btn-secondary-border: var(--border);
+    --es-btn-secondary-hover: rgba(255, 255, 255, 0.08);
+    --es-btn-soft-bg: rgba(255, 255, 255, 0.06);
+    --es-btn-soft-hover: rgba(255, 255, 255, 0.1);
+    --es-btn-radius: 10px;
+
+    /* Button label colors (WCAG contrast pairs) */
+    --btn-primary-text: var(--primary-contrast);
+    --btn-secondary-text: var(--text);
+    --btn-outline-text: var(--text);
+    --btn-ghost-text: var(--text);
+    --btn-success-text: #ffffff;
+    --btn-warning-text: #ffffff;
+    --btn-danger-text: #ffffff;
+    --btn-success-bg: var(--theme-success);
+    --btn-warning-bg: var(--theme-warning);
+    --btn-danger-bg: var(--theme-error);
+    --btn-muted-text: var(--text-secondary);
+
+    --es-flat-ui: 0;
+    --es-enable-glass: 1;
+    --es-enable-gradient: 1;
+
+    color-scheme: dark;
+}
+
+/* ==========================================================================
+   Panel aliases (both themes)
+   ========================================================================== */
+
+body.ftp-student-body {
+    --ftp-bg: var(--bg);
+    --ftp-card: var(--card);
+    --ftp-text: var(--text);
+    --ftp-text-secondary: var(--text-secondary);
+    --ftp-border: var(--border);
+    --ftp-primary: var(--primary);
+    --ftp-success: var(--theme-success);
+    --ftp-warning: var(--theme-warning);
+    --ftp-danger: var(--theme-error);
+    --sp-glass: var(--theme-surface-glass);
+    --sp-glass-border: var(--border);
+    --sp-bg: var(--bg);
+    --sp-text: var(--text);
+    --sp-text-muted: var(--muted);
+    --sp-primary: var(--primary);
+}
+
+body.org-body,
+body.organization-dashboard {
+    --org-bg: var(--bg);
+    --org-surface: var(--theme-surface-glass);
+    --org-surface-2: var(--theme-surface-glass-2);
+    --org-border: var(--border);
+    --org-text: var(--text);
+    --org-text-2: var(--text-secondary);
+    --org-text-3: var(--muted);
+    --org-primary: var(--primary);
+    --org-indigo: var(--primary);
+    --org-success: var(--theme-success);
+    --org-warning: var(--theme-warning);
+    --org-danger: var(--theme-error);
+}
+
+body.ap-admin-layout {
+    --ap-bg: var(--bg);
+    --ap-surface: var(--card);
+    --ap-text: var(--text);
+    --ap-text-secondary: var(--text-secondary);
+    --ap-border: var(--border);
+    --ap-primary: var(--primary);
+    --ap-indigo: var(--primary);
+    --ap-glass: var(--theme-surface-glass);
+    --ap-glass-border: var(--border);
+}

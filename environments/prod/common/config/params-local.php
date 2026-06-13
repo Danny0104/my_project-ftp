@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'session.cookieSecure' => true,
+    'mail.smtp.host' => getenv('SMTP_HOST') ?: 'smtp.example.com',
+    'mail.smtp.port' => (int) (getenv('SMTP_PORT') ?: 587),
+    'mail.smtp.username' => getenv('SMTP_USER') ?: '',
+    'mail.smtp.password' => getenv('SMTP_PASS') ?: '',
+    'mail.smtp.encryption' => getenv('SMTP_ENCRYPTION') ?: 'tls',
+    'senderEmail' => getenv('MAIL_FROM') ?: 'noreply@example.com',
+    'senderName' => getenv('MAIL_FROM_NAME') ?: 'Field Training Platform',
+    'supportEmail' => getenv('MAIL_SUPPORT') ?: 'support@example.com',
+    'googleOAuth.clientId' => getenv('GOOGLE_CLIENT_ID') ?: '',
+    'googleOAuth.clientSecret' => getenv('GOOGLE_CLIENT_SECRET') ?: '',
+    'googleOAuth.returnUrl' => getenv('GOOGLE_RETURN_URL') ?: '',
+    'facebookOAuth.clientId' => getenv('FACEBOOK_CLIENT_ID') ?: '',
+    'facebookOAuth.clientSecret' => getenv('FACEBOOK_CLIENT_SECRET') ?: '',
+    'chat.websocketUrl' => getenv('CHAT_WEBSOCKET_URL') ?: '',
+    'chat.broadcastUrl' => getenv('CHAT_BROADCAST_URL') ?: '',
+    'studentId.tesseractPath' => getenv('TESSERACT_PATH') ?: '',
+    'api.rateLimit.login.maxAttempts' => 10,
+    'api.rateLimit.login.window' => 300,
+    'api.rateLimit.signup.maxAttempts' => 5,
+    'api.rateLimit.signup.window' => 600,
+];

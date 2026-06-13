@@ -1,0 +1,1081 @@
+/* Field Training Platform — Student Dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --ftp-primary: #1950c7;
+    --ftp-primary-soft: rgba(37, 99, 235, 0.1);
+    --ftp-primary-hover: #2052de;
+    --ftp-navy: #0F172A;
+    --ftp-navy-light: #1E293B;
+    --ftp-bg: #F8FAFC;
+    --ftp-card: #FFFFFF;
+    --ftp-success: #22C55E;
+    --ftp-warning: #F59E0B;
+    --ftp-danger: #EF4444;
+    --ftp-text: #c2cbdf;
+    --ftp-text-secondary: #727a89;
+    --ftp-border: #E5E7EB;
+    --ftp-radius: 16px;
+    --ftp-radius-sm: 10px;
+    --ftp-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 16px rgba(15, 23, 42, 0.04);
+    --ftp-shadow-hover: 0 8px 24px rgba(15, 23, 42, 0.1);
+    --ftp-sidebar-width: 240px;
+    --ftp-topbar-height: 64px;
+    --ftp-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body.ftp-dashboard-layout.ftp-student-body,
+body.ftp-student-body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ftp-text);
+    background: var(--ftp-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Layout ─── */
+.ftp-app {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.ftp-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-content {
+    flex: 1;
+    padding: 24px 28px 40px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ─── Sidebar (width/collapse in layout-shell-reset + student-shell-premium) ─── */
+.ftp-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 12px 12px;
+    flex-shrink: 0;
+    min-height: 0;
+}
+
+.ftp-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px 12px;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.ftp-sidebar-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--ftp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.ftp-sidebar-brand-text span:first-child {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #F1F5F9;
+    line-height: 1.2;
+}
+
+.ftp-sidebar-brand-text span:last-child {
+    display: block;
+    font-size: 11px;
+    color: #64748B;
+    margin-top: 1px;
+}
+
+.ftp-sidebar-nav {
+    flex: 0 1 auto;
+    overflow-y: visible;
+    overflow-x: hidden;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.ftp-sidebar-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4px;
+}
+
+.ftp-sidebar-nav-list li { margin-bottom: 2px; }
+
+.ftp-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    max-width: 100%;
+    padding: 9px 12px;
+    border-radius: var(--ftp-radius-sm);
+    color: #94A3B8;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: var(--ftp-transition);
+}
+
+.ftp-sidebar-link i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.ftp-sidebar-link:hover {
+    color: #E2E8F0;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ftp-sidebar-link.active {
+    color: #fff;
+    background: var(--ftp-primary);
+}
+
+.ftp-sidebar-link .badge-count {
+    margin-left: auto;
+    background: var(--ftp-danger);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.ftp-sidebar-footer {
+    padding: 14px 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+    color: #64748B;
+}
+
+.ftp-sidebar-footer strong { color: #94A3B8; }
+
+/* ─── Topbar ─── */
+.ftp-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    height: var(--ftp-topbar-height);
+    background: var(--ftp-card);
+    border-bottom: 1px solid var(--ftp-border);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.ftp-topbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--ftp-text);
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.ftp-topbar-toggle:hover { background: var(--ftp-bg); }
+
+.ftp-search {
+    flex: 1;
+    max-width: 420px;
+    position: relative;
+}
+
+.ftp-search input {
+    width: 100%;
+    padding: 9px 14px 9px 38px;
+    border: 1px solid var(--ftp-border);
+    border-radius: var(--ftp-radius-sm);
+    font-size: 13.5px;
+    font-family: inherit;
+    background: var(--ftp-bg);
+    color: var(--ftp-text);
+    transition: var(--ftp-transition);
+}
+
+.ftp-search input:focus {
+    outline: none;
+    border-color: var(--ftp-primary);
+    background: var(--ftp-card);
+    box-shadow: 0 0 0 3px var(--ftp-primary-soft);
+}
+
+.ftp-search i {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ftp-text-secondary);
+    font-size: 13px;
+}
+
+.ftp-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.ftp-icon-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-radius: var(--ftp-radius-sm);
+    color: var(--ftp-text-secondary);
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--ftp-transition);
+    text-decoration: none;
+}
+
+.ftp-icon-btn:hover {
+    background: var(--ftp-bg);
+    color: var(--ftp-text);
+}
+
+.ftp-icon-btn .dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--ftp-danger);
+    border-radius: 50%;
+    border: 2px solid var(--ftp-card);
+}
+
+.ftp-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 10px 4px 4px;
+    border: 1px solid var(--ftp-border);
+    border-radius: 40px;
+    background: var(--ftp-card);
+    cursor: pointer;
+    transition: var(--ftp-transition);
+}
+
+.ftp-profile-btn:hover { border-color: #CBD5E1; }
+
+.ftp-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ftp-primary-soft);
+    color: var(--ftp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.ftp-profile-btn span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ftp-text);
+}
+
+.ftp-profile-btn.dropdown-toggle::after {
+    margin-left: 2px;
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+/* ─── Hero ─── */
+.ftp-hero {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.ftp-hero-left {
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius);
+    padding: 28px;
+    box-shadow: var(--ftp-shadow);
+    border: 1px solid var(--ftp-border);
+}
+
+.ftp-hero-greeting {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ftp-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+}
+
+.ftp-hero-sub {
+    font-size: 14px;
+    color: var(--ftp-text-secondary);
+    margin: 0 0 22px;
+}
+
+.ftp-profile-strength {
+    margin-bottom: 22px;
+}
+
+.ftp-profile-strength-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.ftp-profile-strength-header span:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ftp-text);
+}
+
+.ftp-profile-strength-header span:last-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ftp-primary);
+}
+
+.ftp-progress-bar {
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.ftp-progress-fill {
+    height: 100%;
+    background: var(--ftp-primary);
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+.ftp-profile-hint {
+    font-size: 12.5px;
+    color: var(--ftp-text-secondary);
+    margin-top: 8px;
+}
+
+.ftp-profile-hint strong { color: var(--ftp-primary); }
+
+.ftp-profile-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.ftp-task-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--ftp-transition);
+}
+
+.ftp-task-chip.done {
+    background: rgba(34, 197, 94, 0.1);
+    color: #15803D;
+}
+
+.ftp-task-chip.pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: #B45309;
+}
+
+.ftp-task-chip.pending:hover {
+    background: rgba(245, 158, 11, 0.18);
+}
+
+.ftp-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.ftp-stat-card {
+    background: var(--ftp-bg);
+    border-radius: var(--ftp-radius-sm);
+    padding: 14px 16px;
+    border: 1px solid var(--ftp-border);
+    transition: var(--ftp-transition);
+}
+
+.ftp-stat-card:hover {
+    border-color: #CBD5E1;
+    transform: translateY(-1px);
+}
+
+.ftp-stat-card .label {
+    font-size: 11.5px;
+    color: var(--ftp-text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.ftp-stat-card .value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ftp-text);
+    letter-spacing: -0.02em;
+}
+
+.ftp-stat-card .value.success { color: var(--ftp-success); }
+
+/* Featured opportunity card */
+.ftp-featured-card {
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius);
+    padding: 24px;
+    box-shadow: var(--ftp-shadow);
+    border: 1px solid var(--ftp-border);
+    display: flex;
+    flex-direction: column;
+    transition: var(--ftp-transition);
+}
+
+.ftp-featured-card:hover { box-shadow: var(--ftp-shadow-hover); }
+
+.ftp-featured-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ftp-primary);
+    margin-bottom: 14px;
+}
+
+.ftp-featured-org {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.ftp-org-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--ftp-primary-soft);
+    color: var(--ftp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.ftp-featured-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ftp-text);
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+
+.ftp-featured-company {
+    font-size: 13px;
+    color: var(--ftp-text-secondary);
+    margin: 0;
+}
+
+.ftp-featured-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.ftp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 500;
+    background: var(--ftp-bg);
+    color: var(--ftp-text-secondary);
+    border: 1px solid var(--ftp-border);
+}
+
+.ftp-badge.primary {
+    background: var(--ftp-primary-soft);
+    color: var(--ftp-primary);
+    border-color: transparent;
+}
+
+.ftp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: var(--ftp-radius-sm);
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: var(--ftp-transition);
+}
+
+.ftp-btn-primary {
+    background: var(--ftp-primary);
+    color: var(--btn-primary-text, #fff);
+}
+
+.ftp-btn-primary:hover {
+    background: var(--ftp-primary-hover);
+    color: var(--btn-primary-text, #fff);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.ftp-btn-outline {
+    background: transparent;
+    color: var(--ftp-text);
+    border: 1px solid var(--ftp-border);
+}
+
+.ftp-btn-outline:hover {
+    background: var(--ftp-bg);
+    border-color: #CBD5E1;
+}
+
+.ftp-btn-sm { padding: 7px 14px; font-size: 12.5px; }
+
+.ftp-featured-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.ftp-featured-actions .ftp-btn { flex: 1; }
+
+/* ─── Section headers ─── */
+.ftp-section {
+    margin-bottom: 28px;
+}
+
+.ftp-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.ftp-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ftp-text);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.ftp-section-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ftp-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ftp-section-link:hover { color: var(--ftp-primary-hover); }
+
+/* ─── Opportunity cards ─── */
+.ftp-opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.ftp-opp-card {
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius);
+    padding: 20px;
+    border: 1px solid var(--ftp-border);
+    box-shadow: var(--ftp-shadow);
+    transition: var(--ftp-transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.ftp-opp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ftp-shadow-hover);
+    border-color: #CBD5E1;
+}
+
+.ftp-opp-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.ftp-opp-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ftp-text);
+    margin: 0 0 2px;
+    line-height: 1.35;
+}
+
+.ftp-opp-company {
+    font-size: 12.5px;
+    color: var(--ftp-text-secondary);
+    margin: 0;
+}
+
+.ftp-opp-desc {
+    font-size: 13px;
+    color: var(--ftp-text-secondary);
+    margin: 0 0 14px;
+    line-height: 1.5;
+    flex: 1;
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ftp-opp-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ftp-border);
+}
+
+.ftp-opp-deadline {
+    font-size: 11.5px;
+    color: var(--ftp-text-secondary);
+}
+
+.ftp-opp-deadline.urgent { color: var(--ftp-warning); font-weight: 600; }
+
+.ftp-opp-actions { display: flex; gap: 6px; }
+
+.ftp-save-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--ftp-border);
+    border-radius: 8px;
+    background: var(--ftp-card);
+    color: var(--ftp-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--ftp-transition);
+}
+
+.ftp-save-btn:hover { border-color: var(--ftp-primary); color: var(--ftp-primary); }
+
+.ftp-save-btn.saved {
+    background: var(--ftp-primary-soft);
+    border-color: transparent;
+    color: var(--ftp-primary);
+}
+
+/* ─── Application tracking ─── */
+.ftp-tracker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.ftp-track-card {
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius);
+    padding: 18px 20px;
+    border: 1px solid var(--ftp-border);
+    box-shadow: var(--ftp-shadow);
+    transition: var(--ftp-transition);
+}
+
+.ftp-track-card:hover { border-color: #CBD5E1; }
+
+.ftp-track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.ftp-track-position {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ftp-text);
+    margin: 0 0 2px;
+}
+
+.ftp-track-org {
+    font-size: 12.5px;
+    color: var(--ftp-text-secondary);
+    margin: 0;
+}
+
+.ftp-status-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.ftp-status-pill.pending { background: rgba(245, 158, 11, 0.12); color: #B45309; }
+.ftp-status-pill.review { background: rgba(37, 99, 235, 0.1); color: var(--ftp-primary); }
+.ftp-status-pill.approved { background: rgba(34, 197, 94, 0.12); color: #15803D; }
+.ftp-status-pill.rejected { background: rgba(239, 68, 68, 0.1); color: #DC2626; }
+.ftp-status-pill.withdrawn { background: #F1F5F9; color: #64748B; }
+
+.ftp-timeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+}
+
+.ftp-timeline-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.ftp-timeline-step::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    right: -50%;
+    height: 2px;
+    background: #E2E8F0;
+    z-index: 0;
+}
+
+.ftp-timeline-step:last-child::before { display: none; }
+
+.ftp-timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    margin: 0 auto 6px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: transparent;
+    transition: var(--ftp-transition);
+}
+
+.ftp-timeline-step.done .ftp-timeline-dot {
+    background: var(--ftp-primary);
+    color: #fff;
+}
+
+.ftp-timeline-step.active .ftp-timeline-dot {
+    background: var(--ftp-primary);
+    box-shadow: 0 0 0 4px var(--ftp-primary-soft);
+}
+
+.ftp-timeline-step.rejected .ftp-timeline-dot { background: var(--ftp-danger); }
+
+.ftp-timeline-step.done::before,
+.ftp-timeline-step.active::before { background: var(--ftp-primary); }
+
+.ftp-timeline-label {
+    font-size: 9.5px;
+    color: var(--ftp-text-secondary);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.ftp-timeline-step.done .ftp-timeline-label,
+.ftp-timeline-step.active .ftp-timeline-label {
+    color: var(--ftp-text);
+    font-weight: 600;
+}
+
+/* ─── Deadlines ─── */
+.ftp-deadlines-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.ftp-deadline-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius-sm);
+    padding: 16px 18px;
+    border: 1px solid var(--ftp-border);
+    transition: var(--ftp-transition);
+    color: inherit;
+    text-decoration: none;
+}
+
+.ftp-deadline-card:hover {
+    border-color: var(--ftp-warning);
+    box-shadow: var(--ftp-shadow);
+}
+
+.ftp-deadline-date {
+    width: 48px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.ftp-deadline-date .day {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ftp-text);
+    line-height: 1;
+}
+
+.ftp-deadline-date .month {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ftp-warning);
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.ftp-deadline-info h4 {
+    font-size: 13.5px;
+    font-weight: 600;
+    margin: 0 0 2px;
+    color: var(--ftp-text);
+}
+
+.ftp-deadline-info p {
+    font-size: 12px;
+    color: var(--ftp-text-secondary);
+    margin: 0;
+}
+
+.ftp-countdown {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(245, 158, 11, 0.12);
+    color: #B45309;
+    white-space: nowrap;
+}
+
+.ftp-countdown.soon {
+    background: rgba(239, 68, 68, 0.1);
+    color: #DC2626;
+}
+
+/* ─── Announcements ─── */
+.ftp-announcements {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ftp-announcement {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius-sm);
+    padding: 16px 18px;
+    border: 1px solid var(--ftp-border);
+    transition: var(--ftp-transition);
+    text-decoration: none;
+    color: inherit;
+}
+
+.ftp-announcement:hover {
+    border-color: #CBD5E1;
+    box-shadow: var(--ftp-shadow);
+}
+
+.ftp-announcement-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--ftp-primary-soft);
+    color: var(--ftp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.ftp-announcement-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 3px;
+    color: var(--ftp-text);
+}
+
+.ftp-announcement-body p {
+    font-size: 13px;
+    color: var(--ftp-text-secondary);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.ftp-announcement-time {
+    font-size: 11.5px;
+    color: #9CA3AF;
+    margin-left: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ─── Empty states ─── */
+.ftp-empty {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--ftp-card);
+    border-radius: var(--ftp-radius);
+    border: 1px dashed var(--ftp-border);
+}
+
+.ftp-empty-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--ftp-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 22px;
+    color: var(--ftp-text-secondary);
+}
+
+.ftp-empty h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--ftp-text);
+}
+
+.ftp-empty p {
+    font-size: 13.5px;
+    color: var(--ftp-text-secondary);
+    margin: 0 0 20px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ─── Two-column bottom layout ─── */
+.ftp-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* ─── Mobile drawer ─── */
+/* Overlay: platform-responsive.css + layout-shell-reset */
+
+/* ─── Stats swipe on mobile ─── */
+.ftp-stats-scroll {
+    display: contents;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1100px) {
+    .ftp-opportunities-grid { grid-template-columns: repeat(2, 1fr); }
+    .ftp-hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1023.98px) {
+    .ftp-tracker-grid { grid-template-columns: 1fr; }
+    .ftp-two-col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .ftp-content { padding: 16px; }
+    .ftp-hero-greeting { font-size: 22px; }
+    .ftp-hero-left { padding: 20px; }
+    .ftp-opportunities-grid { grid-template-columns: 1fr; }
+    .ftp-deadlines-grid { grid-template-columns: 1fr; }
+    .ftp-stats-row {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding-bottom: 4px;
+    }
+    .ftp-stat-card {
+        min-width: 140px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+    .ftp-search { max-width: none; }
+    .ftp-profile-btn span { display: none; }
+    .ftp-section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+    .ftp-timeline-label { font-size: 8px; }
+    .ftp-featured-actions { flex-direction: column; }
+}

@@ -1,0 +1,289 @@
+/**
+ * Theme consistency overrides for readable contrast.
+ * Loaded after panel-specific CSS so it can replace hardcoded values when needed.
+ */
+
+/* ---------- Student / general dashboard surfaces ---------- */
+body.ftp-dashboard-layout,
+body.ftp-student-body,
+body.org-dashboard-layout,
+body.org-body {
+    background: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+/* ---------- Student shell: sidebar + topbar ---------- */
+body.ftp-dashboard-layout .ftp-topbar,
+body.ftp-dashboard-layout .ftp-content {
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .ftp-topbar {
+    background: var(--theme-surface) !important;
+    border-bottom-color: var(--theme-border) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar {
+    background: var(--theme-sidebar-bg-1) !important;
+    border-right-color: var(--theme-sidebar-border) !important;
+}
+
+html.theme-light .ftp-dashboard-layout .ftp-sidebar::before,
+html[data-theme="light"] .ftp-dashboard-layout .ftp-sidebar::before {
+    display: none !important;
+}
+
+body.ftp-dashboard-layout .ftp-nav-section-label {
+    color: var(--theme-sidebar-nav-section) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-brand-text span:first-child {
+    color: var(--theme-sidebar-text) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-brand-text span:last-child,
+body.ftp-dashboard-layout .ftp-sidebar-footer,
+body.ftp-dashboard-layout .ftp-sidebar-footer strong {
+    color: var(--theme-sidebar-text-secondary) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-link {
+    color: var(--theme-sidebar-text-secondary) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-link:hover {
+    color: var(--theme-sidebar-text) !important;
+    background: var(--theme-sidebar-link-hover) !important;
+}
+
+html.theme-light .ftp-dashboard-layout .ftp-sidebar-link.active,
+html[data-theme="light"] .ftp-dashboard-layout .ftp-sidebar-link.active {
+    color: var(--primary) !important;
+    background: var(--primary-soft) !important;
+    box-shadow: none !important;
+    border-left: 3px solid var(--primary) !important;
+}
+
+html.theme-dark .ftp-dashboard-layout .ftp-sidebar-link.active,
+html[data-theme="dark"] .ftp-dashboard-layout .ftp-sidebar-link.active {
+    color: var(--primary-contrast) !important;
+    background: var(--primary-soft) !important;
+    box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.2) !important;
+    border-left: 4px solid var(--primary) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-link .badge-count {
+    color: var(--theme-primary-contrast) !important;
+}
+
+/* ---------- Dashboard cards / panels ---------- */
+body.ftp-dashboard-layout .ftp-kpi-card,
+body.ftp-dashboard-layout .ftp-analytics-panel,
+body.ftp-dashboard-layout .sp-glass,
+body.ftp-dashboard-layout .sp-panel,
+body.ftp-dashboard-layout .sp-search-bar {
+    background: var(--theme-surface) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .ftp-kpi-card .value {
+    color: var(--theme-text) !important;
+}
+
+body.org-dashboard-layout .org-card,
+body.org-dashboard-layout .org-hero,
+body.org-dashboard-layout .org-analytics-panel,
+body.org-dashboard-layout .org-analytics-insights,
+body.org-dashboard-layout .notification-hub .sp-messages-hub {
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+body.org-dashboard-layout .org-analytics-panel,
+body.org-dashboard-layout .org-hero,
+body.org-dashboard-layout .notification-hub .sp-messages-hub {
+    background: var(--theme-surface) !important;
+}
+
+/* ---------- Org shell: topbar/sidebar ---------- */
+body.org-dashboard-layout .org-topbar,
+body.org-dashboard-layout .org-content {
+    color: var(--theme-text) !important;
+}
+
+body.org-dashboard-layout .org-topbar {
+    background: var(--theme-surface) !important;
+    border-bottom-color: var(--theme-border) !important;
+}
+
+/* The org sidebar is glass/brand-heavy; only fix text contrast + borders. */
+body.org-dashboard-layout .org-sidebar {
+    border-right-color: var(--theme-border) !important;
+}
+
+body.org-dashboard-layout .org-nav-link,
+body.org-dashboard-layout .org-nav-label,
+body.org-dashboard-layout .org-sidebar-footer {
+    color: var(--theme-text) !important;
+}
+
+body.org-dashboard-layout .org-nav-link.is-active {
+    color: var(--theme-primary) !important;
+}
+
+/* ---------- Tables ---------- */
+body.ftp-dashboard-layout .table,
+body.org-dashboard-layout .org-data-table,
+body.ap-admin-layout .ap-table-scroll .table {
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .table th,
+body.org-dashboard-layout .org-data-table th,
+body.ap-admin-layout .ap-table-scroll th,
+body.ftp-dashboard-layout .grid-view th,
+body.org-dashboard-layout .grid-view th {
+    color: var(--theme-text-secondary) !important;
+    border-bottom-color: var(--theme-border) !important;
+    background: var(--theme-surface-2) !important;
+}
+
+body.ftp-dashboard-layout .table td,
+body.org-dashboard-layout .org-data-table td,
+body.ap-admin-layout .ap-table-scroll td,
+body.ftp-dashboard-layout .grid-view td,
+body.org-dashboard-layout .grid-view td {
+    color: var(--theme-text) !important;
+    border-bottom-color: var(--theme-border) !important;
+}
+
+/* ---------- Forms / inputs ---------- */
+body.ftp-dashboard-layout input,
+body.ftp-dashboard-layout select,
+body.ftp-dashboard-layout textarea,
+body.org-dashboard-layout input,
+body.org-dashboard-layout select,
+body.org-dashboard-layout textarea {
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .form-control,
+body.ftp-dashboard-layout .form-select,
+body.org-dashboard-layout .form-control,
+body.org-dashboard-layout .form-select {
+    background: var(--theme-surface) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .form-control::placeholder,
+body.ftp-dashboard-layout input::placeholder,
+body.org-dashboard-layout .form-control::placeholder,
+body.org-dashboard-layout input::placeholder {
+    color: var(--theme-text-secondary) !important;
+    opacity: 1 !important;
+}
+
+body.ftp-dashboard-layout .form-label,
+body.org-dashboard-layout .form-label {
+    color: var(--theme-text-secondary) !important;
+}
+
+body.ftp-dashboard-layout .invalid-feedback,
+body.ftp-dashboard-layout .help-block,
+body.ftp-dashboard-layout .hint-block,
+body.org-dashboard-layout .invalid-feedback,
+body.org-dashboard-layout .help-block,
+body.org-dashboard-layout .hint-block {
+    color: var(--theme-text-secondary) !important;
+}
+
+body.ftp-dashboard-layout .invalid-feedback {
+    color: var(--theme-error) !important;
+}
+
+/* ---------- Links (exclude button-styled anchors — see button-contrast.css) ---------- */
+body.ftp-dashboard-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft),
+body.org-dashboard-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft),
+body.ap-admin-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft) {
+    color: var(--theme-primary) !important;
+}
+
+body.ftp-dashboard-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft):hover,
+body.org-dashboard-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft):hover,
+body.ap-admin-layout a:not([class*="btn"]):not(.es-btn--primary):not(.es-btn--secondary):not(.es-btn--soft):hover {
+    color: var(--theme-primary-hover) !important;
+}
+
+/* ---------- Dropdowns / menus ---------- */
+body.ftp-dashboard-layout .dropdown-menu,
+body.org-dashboard-layout .dropdown-menu,
+body.ap-admin-layout .dropdown-menu {
+    background: var(--theme-surface) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .dropdown-item,
+body.org-dashboard-layout .dropdown-item,
+body.ap-admin-layout .dropdown-item {
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .dropdown-item:hover,
+body.ftp-dashboard-layout .dropdown-item:focus,
+body.org-dashboard-layout .dropdown-item:hover,
+body.org-dashboard-layout .dropdown-item:focus,
+body.ap-admin-layout .dropdown-item:hover,
+body.ap-admin-layout .dropdown-item:focus {
+    background: var(--theme-surface-2) !important;
+    color: var(--theme-text) !important;
+}
+
+/* ---------- Modals ---------- */
+body.ftp-dashboard-layout .modal-content,
+body.org-dashboard-layout .modal-content,
+body.ap-admin-layout .modal-content {
+    background: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-border) !important;
+}
+
+body.ftp-dashboard-layout .modal-header,
+body.org-dashboard-layout .modal-header,
+body.ap-admin-layout .modal-header,
+body.ftp-dashboard-layout .modal-footer,
+body.org-dashboard-layout .modal-footer,
+body.ap-admin-layout .modal-footer {
+    border-color: var(--theme-border) !important;
+}
+
+/* ---------- Alerts / notifications / toasts ---------- */
+body.ftp-dashboard-layout .alert,
+body.org-dashboard-layout .alert,
+body.ftp-dashboard-layout .toast,
+body.org-dashboard-layout .toast {
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .ftp-toast,
+body.org-dashboard-layout .org-toast {
+    color: var(--theme-text) !important;
+}
+
+/* Ensure toasts use readable backgrounds in both themes. */
+body.ftp-dashboard-layout .ftp-toast,
+body.org-dashboard-layout .org-toast {
+    background: var(--theme-surface) !important;
+    border: 1px solid var(--theme-border) !important;
+}
+
+/* ---------- Focus rings ---------- */
+body.ftp-dashboard-layout :focus-visible,
+body.org-dashboard-layout :focus-visible,
+body.ap-admin-layout :focus-visible {
+    outline: 2px solid var(--theme-ring) !important;
+    outline-offset: 2px !important;
+}
+

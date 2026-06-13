@@ -1,0 +1,16 @@
+/**
+ * Public page transitions — coordinated with premium-loading.js
+ * (Body fade handled via html.plt-ready / html.plt-leaving in premium-loading.css)
+ */
+
+body.site-public-page {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.plt-leaving body.site-public-page,
+    html.plt-ready body.site-public-page {
+        opacity: 1;
+        transition: none;
+    }
+}

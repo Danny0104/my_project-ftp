@@ -1,0 +1,49 @@
+.ap-support-admin .table td,
+.ap-support-admin .table th {
+    vertical-align: middle;
+}
+
+.ap-support-thread .support-msg {
+    margin-bottom: 12px;
+}
+
+.ap-support-thread .support-msg__meta {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(226, 232, 240, 0.65);
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.ap-support-thread .support-msg__bubble {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(2, 6, 23, 0.2);
+    color: rgba(226, 232, 240, 0.95);
+}
+
+.ap-support-thread .support-msg--out .support-msg__bubble {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(99, 102, 241, 0.12));
+}
+
+.ap-support-thread .support-attachments {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ap-support-thread .support-attachment {
+    color: rgba(226, 232, 240, 0.92);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.ap-support-thread .support-attachment:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+}
+

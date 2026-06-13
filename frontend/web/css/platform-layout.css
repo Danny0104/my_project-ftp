@@ -1,0 +1,344 @@
+/**
+ * Platform layout containment — prevents overflow, overlap, and misalignment.
+ * Loaded after panel CSS; complements platform-responsive.css.
+ */
+
+/* ─── Global containment ─── */
+html.ft-dashboard-root,
+body.ftp-dashboard-layout,
+body.org-dashboard-layout,
+body.ap-admin-layout,
+body.site-public-page,
+body.auth-page {
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+body.ftp-dashboard-layout .ftp-content,
+body.org-dashboard-layout .org-content,
+body.ap-admin-layout .ap-content,
+body.ap-admin-layout .ap-content-wrap,
+body.site-public-page .site-public-main {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Flex/grid children must shrink */
+.ftp-app,
+.org-app,
+.ap-app,
+.ftp-main,
+.org-main,
+.ap-main,
+[class*="-workspace"],
+[class*="-layout"],
+[class*="-grid"],
+[class*="-feed"],
+[class*="-cards"] {
+    min-width: 0;
+}
+
+/* ─── Card system (shared) ─── */
+.ft-card,
+.ftp-card,
+.org-card,
+.sp-card,
+.sp-glass,
+.sp-panel,
+.premium-card,
+.pm-card,
+[class*="-card"]:not([class*="carousel-card"]):not(.card-body):not(.card-header):not(.card-footer) {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Dashboard stat/KPI cards in grids */
+.ft-card-grid > *,
+.ftp-kpi-grid > *,
+.org-grid > *,
+.sp-stats-grid > *,
+.sp-om-cards > * {
+    min-width: 0;
+}
+
+/* Card internal flex columns */
+.ft-card--flex,
+.sp-om-card,
+.sp-opp-card,
+.pm-job-card,
+.org-kpi {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ─── Text truncation ─── */
+.ft-truncate,
+.ft-line-clamp-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.ft-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.ft-line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* ─── Tag / badge rows ─── */
+.ft-tag-row,
+.sp-om-tags,
+.sp-om-meta,
+.sp-om-chips,
+.sp-filter-chips,
+.sp-quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.ft-tag-row > *,
+.sp-om-tags > *,
+.sp-om-meta > * {
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+/* ─── Action bars (never overflow parent) ─── */
+.ft-action-bar,
+.sp-om-card-foot,
+.sp-opp-actions,
+.sp-app-card-actions,
+.org-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.ft-action-bar > *,
+.sp-om-actions-left,
+.sp-om-actions-right,
+.sp-opp-actions-left,
+.sp-opp-actions-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+/* Buttons in cards */
+.ft-action-bar .btn,
+.ft-action-bar [class*="-btn"],
+.sp-om-card-foot .sp-om-btn,
+.sp-om-card-foot .sp-om-icon-btn,
+.sp-opp-actions .sp-btn-apply,
+.sp-opp-actions .sp-btn-ghost {
+    flex-shrink: 0;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .ft-action-bar,
+    .sp-om-card-foot {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sp-om-actions-left,
+    .sp-om-actions-right,
+    .sp-opp-actions-left,
+    .sp-opp-actions-right {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .sp-om-card-foot .sp-om-btn--primary,
+    .sp-om-card-foot .sp-om-btn--ghost {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+}
+
+/* ─── Responsive auto-fill card grids ─── */
+.ft-auto-grid,
+.sp-om-cards.ft-auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: var(--ft-layout-gap, 12px);
+    align-items: stretch;
+}
+
+/* Equal-height grid cards */
+.ft-auto-grid > .sp-om-card,
+.ft-auto-grid > [class*="-card"] {
+    height: 100%;
+}
+
+/* ─── Multi-column workspaces ─── */
+.ft-workspace-3 {
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) minmax(0, 1fr) minmax(180px, 240px);
+    gap: var(--ft-layout-gap, 12px);
+    align-items: start;
+    min-width: 0;
+}
+
+.ft-workspace-3 > * {
+    min-width: 0;
+}
+
+.ft-workspace-main {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Sticky side panels — no overlap with main */
+.ft-sticky-panel {
+    position: sticky;
+    top: calc(var(--ft-topbar-h, 64px) + 8px);
+    max-height: calc(100vh - var(--ft-topbar-h, 64px) - 16px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* ─── Tables ─── */
+.ft-table-scroll .table,
+.org-table-scroll .table,
+.ap-table-scroll .table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.ft-table-scroll th,
+.ft-table-scroll td {
+    word-break: break-word;
+    vertical-align: middle;
+}
+
+/* ─── Forms in narrow columns ─── */
+.form-control,
+.form-select,
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+/* ─── Prevent hover lift overlap in dense grids ─── */
+.ft-card-grid-dense [class*="-card"]:hover,
+.sp-om-cards .sp-om-card:hover,
+.org-opps-grid .org-opp-card:hover,
+.pm-grid .pm-card:hover {
+    z-index: 2;
+    position: relative;
+}
+
+/* Absolute badges inside cards */
+[class*="-card"] [class*="badge"],
+[class*="-card"] [class*="match-badge"] {
+    max-width: calc(100% - 16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ft-card-grid-dense [class*="-card"]:hover,
+    .sp-om-cards .sp-om-card:hover {
+        transform: none !important;
+    }
+}
+
+/* ─── Toolbar rows ─── */
+.ft-toolbar,
+.sp-om-toolbar,
+.sp-view-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.ft-toolbar > * {
+    flex-shrink: 0;
+}
+
+.ft-toolbar .flex-1,
+.ft-toolbar [class*="results-count"] {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* ─── Hero / KPI rows ─── */
+.ft-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+    gap: var(--ft-layout-gap, 10px);
+}
+
+/* ─── Public + auth pages ─── */
+body.site-public-page .pm-page,
+body.site-public-page .public-page,
+body.auth-page .auth-card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+body.site-public-page img,
+body.site-public-page video,
+body.site-public-page iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ─── Messaging hubs ─── */
+[data-messaging-hub],
+.sp-messages-hub,
+.org-messages-hub {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ─── Bootstrap card compatibility ─── */
+.card {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.card-body {
+    min-width: 0;
+}
+
+.card .btn,
+.card .btn-group {
+    flex-wrap: wrap;
+}
+
+/* ─── Section spacing standard ─── */
+.ft-section {
+    margin-bottom: var(--ft-layout-section, 20px);
+}
+
+.ft-section:last-child {
+    margin-bottom: 0;
+}

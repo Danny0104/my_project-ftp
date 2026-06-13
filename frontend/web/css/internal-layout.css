@@ -1,0 +1,43 @@
+/**
+ * Legacy authenticated layout (navbar + container) — scoped to ft-internal-layout.
+ */
+body.ft-internal-layout .navbar-custom {
+    background: linear-gradient(90deg, #a51c30 0%, #7b1fa2 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: var(--ft-z-header, 30);
+}
+
+body.ft-internal-layout .navbar-custom .navbar-brand {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+body.ft-internal-layout .navbar-custom .nav-link {
+    color: #f3e5f5 !important;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 6px;
+}
+
+body.ft-internal-layout .navbar-custom .nav-link:hover,
+body.ft-internal-layout .navbar-custom .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+body.ft-internal-layout .navbar-custom .login {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+@media (max-width: 991px) {
+    body.ft-internal-layout .navbar-custom .navbar-nav {
+        background: #a51c30;
+        border-radius: 0 0 12px 12px;
+        padding: 0.5rem 1rem;
+    }
+}

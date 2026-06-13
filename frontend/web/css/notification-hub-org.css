@@ -1,0 +1,188 @@
+/**
+ * Messages / notifications hub — organization (dark) panel overrides.
+ * Base components live in student-platform.css (sp-*).
+ */
+
+.org-dashboard-layout .notification-hub .sp-page-header h1 {
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-page-header p {
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-mini-stat {
+    background: var(--org-surface);
+    border: 1px solid var(--org-border);
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-messages-hub:not(.org-messages-hub) {
+    background: var(--org-surface);
+    border-color: var(--org-border);
+    box-shadow: var(--org-shadow-soft);
+}
+
+.org-dashboard-layout .notification-hub .org-messages-hub .sp-conv-filters {
+    overflow: hidden;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-sidebar,
+.org-dashboard-layout .notification-hub .sp-chat-sidebar {
+    background: var(--org-surface-2);
+    border-color: var(--org-border);
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-sidebar-head,
+.org-dashboard-layout .notification-hub .sp-conv-filters,
+.org-dashboard-layout .notification-hub .sp-chat-header {
+    border-color: var(--org-border);
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-sidebar-head h2,
+.org-dashboard-layout .notification-hub .sp-conv-title,
+.org-dashboard-layout .notification-hub .sp-chat-header h2 {
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-preview,
+.org-dashboard-layout .notification-hub .sp-conv-time,
+.org-dashboard-layout .notification-hub .sp-chat-header p {
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-search {
+    background-color: var(--org-surface);
+    border-color: var(--org-border);
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-conv-item:hover,
+.org-dashboard-layout .notification-hub .sp-conv-item.is-active {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-center,
+.org-dashboard-layout .notification-hub .sp-chat-empty {
+    background: var(--org-surface);
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-detail {
+    background: var(--org-surface-2);
+    border-left: 1px solid var(--org-border);
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-detail-meta {
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-detail-title {
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-detail-action {
+    background: var(--org-primary);
+    border-radius: 999px;
+}
+
+
+.org-dashboard-layout .notification-hub .text-muted {
+    color: var(--org-text-2) !important;
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-header {
+    background: var(--org-surface);
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-thread {
+    background: var(--org-surface);
+}
+
+.org-dashboard-layout .notification-hub .sp-thread-title,
+.org-dashboard-layout .notification-hub .sp-detail-title {
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-composer {
+    background: var(--org-surface);
+    border-top-color: var(--org-border);
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-composer input {
+    background: var(--org-surface-2);
+    border-color: var(--org-border);
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-chat-composer input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.org-dashboard-layout .notification-hub .sp-bubble--in {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-bubble-time {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.org-dashboard-layout .notification-hub .sp-glass,
+.org-dashboard-layout .notification-hub .sp-notif-summary,
+.org-dashboard-layout .notification-hub .sp-sticky-bar {
+    background: var(--org-surface);
+    border: 1px solid var(--org-border);
+}
+
+.org-dashboard-layout .notification-hub .sp-notif-summary-value,
+.org-dashboard-layout .notification-hub .sp-notif-card-top h3 {
+    color: var(--org-text);
+}
+
+.org-dashboard-layout .notification-hub .sp-notif-summary-label,
+.org-dashboard-layout .notification-hub .sp-notif-card-body p,
+.org-dashboard-layout .notification-hub .sp-notif-card-top time {
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-notif-card {
+    background: var(--org-surface-2);
+    border: 1px solid var(--org-border);
+}
+
+.org-dashboard-layout .notification-hub .sp-notif-card:hover {
+    border-color: rgba(47, 118, 255, 0.45);
+}
+
+.org-dashboard-layout .notification-hub .sp-notif-group-title {
+    color: var(--org-text-3);
+}
+
+.org-dashboard-layout .notification-hub .sp-chip {
+    background: var(--org-surface);
+    border: 1px solid var(--org-border);
+    color: var(--org-text-2);
+}
+
+.org-dashboard-layout .notification-hub .sp-chip.is-active {
+    background: var(--org-primary);
+    border-color: transparent;
+    color: #fff;
+}
+
+.org-dashboard-layout .notification-hub .sp-btn-primary {
+    background: var(--org-primary);
+    border-color: transparent;
+    color: #fff;
+}
+
+.org-dashboard-layout .notification-hub .sp-btn-ghost {
+    background: transparent;
+    border: 1px solid var(--org-border);
+    color: var(--org-text);
+}

@@ -1,0 +1,848 @@
+/**
+ * Enterprise SaaS Design System — variable-driven overrides (light + dark).
+ * Uses theme-tokens.css semantic variables only.
+ * Light-only flat refinements: enterprise-saas-light-only.css
+ */
+
+/* ==========================================================================
+   1. GLOBAL FOUNDATION
+   ========================================================================== */
+
+body.ftp-dashboard-layout,
+body.ftp-student-body,
+body.org-dashboard-layout,
+body.org-body,
+body.ap-admin-layout,
+body.ap-admin-body,
+.site-public-page {
+    background: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+/* No global gradient/blur kills — scoped in enterprise-saas-light-only.css */
+
+/* ==========================================================================
+   2. BUTTON SYSTEM
+   ========================================================================== */
+
+/* Shared enterprise button primitives */
+.es-btn,
+.sp-btn-primary,
+.sp-btn-ghost,
+.sp-btn-apply,
+.spa-btn--primary,
+.spa-btn--ghost,
+.scc-btn--primary,
+.scc-btn--ghost,
+.ftp-btn-primary,
+.ftp-btn-outline,
+.sp-prof-btn--primary,
+.sp-prof-btn--ghost,
+.org-btn-primary,
+.org-btn-ghost,
+.ap-btn-primary,
+.ap-btn-ghost,
+.ap-btn-success,
+.ap-btn-danger,
+.btn-primary:not(.btn-link) {
+    border-radius: var(--es-btn-radius) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    transition: background-color var(--theme-transition),
+                border-color var(--theme-transition),
+                color var(--theme-transition) !important;
+    transform: none !important;
+    background-image: none !important;
+}
+
+/* Primary */
+.sp-btn-primary,
+.sp-btn-apply,
+.spa-btn--primary,
+.scc-btn--primary,
+.ftp-btn-primary,
+.sp-prof-btn--primary,
+.org-btn-primary,
+.ap-btn-primary,
+.btn-primary:not(.btn-link) {
+    background: var(--es-btn-primary-bg) !important;
+    border: 1px solid var(--es-btn-primary-bg) !important;
+    color: var(--btn-primary-text, var(--es-btn-primary-color)) !important;
+}
+
+.sp-btn-primary:hover,
+.sp-btn-apply:hover,
+.spa-btn--primary:hover,
+.scc-btn--primary:hover,
+.ftp-btn-primary:hover,
+.sp-prof-btn--primary:hover,
+.org-btn-primary:hover,
+.ap-btn-primary:hover,
+.btn-primary:not(.btn-link):hover {
+    background: var(--es-btn-primary-hover) !important;
+    border-color: var(--es-btn-primary-hover) !important;
+    color: var(--btn-primary-text, var(--es-btn-primary-color)) !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+/* Secondary / ghost */
+.sp-btn-ghost,
+.spa-btn--ghost,
+.scc-btn--ghost,
+.ftp-btn-outline,
+.sp-prof-btn--ghost,
+.org-btn-ghost,
+.ap-btn-ghost {
+    background: var(--es-btn-secondary-bg) !important;
+    border: 1px solid var(--es-btn-secondary-border) !important;
+    color: var(--btn-ghost-text, var(--theme-text)) !important;
+}
+
+.sp-btn-ghost:hover,
+.spa-btn--ghost:hover,
+.scc-btn--ghost:hover,
+.ftp-btn-outline:hover,
+.sp-prof-btn--ghost:hover,
+.org-btn-ghost:hover,
+.ap-btn-ghost:hover {
+    background: var(--es-btn-secondary-hover) !important;
+    border-color: var(--es-btn-secondary-border) !important;
+    color: var(--btn-ghost-text, var(--theme-text)) !important;
+}
+
+/* Soft buttons */
+.sp-btn-sm,
+.org-btn-sm,
+.ap-btn-sm,
+.btn-outline-secondary {
+    border-radius: var(--es-btn-radius) !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+.btn-outline-secondary {
+    background: var(--es-btn-soft-bg) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+.btn-outline-secondary:hover {
+    background: var(--es-btn-soft-hover) !important;
+}
+
+/* Applied / disabled states */
+.sp-btn-applied,
+.sp-btn-primary:disabled,
+.spa-btn--primary:disabled {
+    background: var(--es-btn-soft-bg) !important;
+    border-color: var(--theme-border) !important;
+    color: var(--theme-muted) !important;
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   3. CARD SYSTEM
+   ========================================================================== */
+
+.es-card,
+.ftp-kpi-card,
+.ftp-analytics-panel,
+.sp-glass,
+.sp-panel,
+.sp-search-bar,
+.sp-opp-card,
+.sp-notif-card,
+.spa-card,
+.spa-rec-card,
+.spa-action-card,
+.scc-glass,
+.org-card,
+.org-hero,
+.org-analytics-panel,
+.org-app-card,
+.ap-stat-card,
+.ap-panel,
+.ap-card,
+.premium-card,
+.ftp-opp-card,
+.ftp-track-card,
+.position-card,
+.dashboard-card,
+.student-card,
+.stat-card,
+.card.shadow-sm,
+.card {
+    background: var(--es-card-bg) !important;
+    border: 1px solid var(--es-card-border) !important;
+    border-radius: var(--es-card-radius) !important;
+    box-shadow: var(--es-card-shadow) !important;
+    color: var(--text) !important;
+}
+
+html.theme-dark .sp-glass,
+html[data-theme="dark"] .sp-glass,
+html.theme-dark .org-card,
+html[data-theme="dark"] .org-card,
+html.theme-dark .spa-card,
+html[data-theme="dark"] .spa-card {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* Card hover — subtle only */
+.sp-opp-card:hover,
+.spa-card:hover,
+.org-card:hover,
+.org-app-card:hover,
+.ap-stat-card:hover,
+.premium-card:hover,
+.ftp-opp-card:hover {
+    box-shadow: var(--theme-shadow-md) !important;
+    border-color: var(--border) !important;
+}
+
+/* ==========================================================================
+   4. TOP BAR / NAVBAR
+   ========================================================================== */
+
+body.ftp-dashboard-layout .ftp-topbar,
+body.org-dashboard-layout .org-topbar,
+body.ap-admin-layout .ap-topbar,
+.site-public-navbar {
+    background: var(--card) !important;
+    border-bottom: 1px solid var(--border-strong) !important;
+    box-shadow: none !important;
+}
+
+html.theme-light .ftp-topbar,
+html[data-theme="light"] .ftp-topbar,
+html.theme-light .org-topbar,
+html[data-theme="light"] .org-topbar,
+html.theme-light .ap-topbar,
+html[data-theme="light"] .ap-topbar,
+html.theme-light .site-public-navbar,
+html[data-theme="light"] .site-public-navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.ftp-dashboard-layout .ftp-topbar-title,
+body.org-dashboard-layout .org-topbar-title,
+body.ap-admin-layout .ap-topbar-title {
+    color: var(--theme-text) !important;
+    font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   5. SIDEBAR
+   ========================================================================== */
+
+body.ftp-dashboard-layout .ftp-sidebar,
+body.org-dashboard-layout .org-sidebar,
+body.ap-admin-layout .ap-sidebar {
+    background: var(--theme-sidebar-bg-1) !important;
+    border-right: 1px solid var(--border-strong) !important;
+    box-shadow: none !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-link,
+body.org-dashboard-layout .org-nav-link,
+body.ap-admin-layout .ap-nav-link {
+    color: var(--theme-text-secondary) !important;
+    border-radius: var(--theme-radius-sm) !important;
+    transition: background-color var(--theme-transition), color var(--theme-transition) !important;
+}
+
+body.ftp-dashboard-layout .ftp-sidebar-link:hover,
+body.org-dashboard-layout .org-nav-link:hover,
+body.ap-admin-layout .ap-nav-link:hover {
+    background: var(--theme-sidebar-link-hover) !important;
+    color: var(--text) !important;
+}
+
+html.theme-light .ftp-sidebar-link.active,
+html[data-theme="light"] .ftp-sidebar-link.active,
+html.theme-light .org-nav-link.is-active,
+html[data-theme="light"] .org-nav-link.is-active,
+html.theme-light .ap-nav-link.is-active,
+html[data-theme="light"] .ap-nav-link.is-active {
+    background: var(--primary-soft) !important;
+    color: var(--primary) !important;
+    border-left: 3px solid var(--primary) !important;
+    box-shadow: none !important;
+}
+
+html.theme-dark .ftp-sidebar-link.active,
+html[data-theme="dark"] .ftp-sidebar-link.active,
+html.theme-dark .org-nav-link.is-active,
+html[data-theme="dark"] .org-nav-link.is-active,
+html.theme-dark .ap-nav-link.is-active,
+html[data-theme="dark"] .ap-nav-link.is-active {
+    background: var(--primary-soft) !important;
+    color: var(--primary) !important;
+    border-left: 4px solid var(--primary) !important;
+    box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.2) !important;
+}
+
+body.ap-admin-layout .ap-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+body.ap-admin-layout .ap-nav-badge {
+    margin-left: auto;
+    min-width: 20px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #ef4444;
+    color: #fff;
+    line-height: 1.3;
+}
+
+body.ftp-dashboard-layout .ftp-nav-section-label,
+body.org-dashboard-layout .org-nav-label,
+body.ap-admin-layout .ap-nav-section {
+    color: var(--theme-muted) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.06em !important;
+}
+
+/* ==========================================================================
+   6. APPLICATION / JOB CARDS (CRITICAL)
+   ========================================================================== */
+
+.spa-card,
+.spa-rec-card,
+.sp-opp-card,
+.org-app-card,
+.ftp-opp-card,
+.pm-opp-card {
+    padding: 1.1rem 1.25rem !important;
+}
+
+.spa-card-head,
+.sp-opp-card-head,
+.org-app-card-head {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+}
+
+.spa-card-logo,
+.sp-opp-card-logo,
+.org-app-card-avatar {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+    background: var(--theme-primary-soft) !important;
+    border: 1px solid #dbeafe !important;
+    color: var(--theme-primary) !important;
+    font-weight: 700 !important;
+    display: grid !important;
+    place-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+.spa-card-intro h3,
+.sp-opp-card h3,
+.org-app-card h4,
+.ftp-opp-title {
+    color: var(--theme-text) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    margin: 0 0 0.2rem !important;
+}
+
+.spa-card-intro p,
+.sp-opp-desc,
+.org-app-card p {
+    color: var(--theme-text-secondary) !important;
+    font-size: 0.875rem !important;
+    margin: 0 !important;
+}
+
+/* Status badges */
+.spa-badge,
+.sp-opp-badge,
+.org-badge,
+.ap-badge,
+.badge {
+    border-radius: 999px !important;
+    font-weight: 600 !important;
+    font-size: 0.72rem !important;
+    padding: 0.2rem 0.55rem !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+.spa-badge--pending,
+.badge.bg-warning {
+    background: #fffbeb !important;
+    color: #b45309 !important;
+    border-color: #fde68a !important;
+}
+
+.spa-badge--approved,
+.badge.bg-success {
+    background: #ecfdf5 !important;
+    color: #047857 !important;
+    border-color: #a7f3d0 !important;
+}
+
+.spa-badge--rejected,
+.badge.bg-danger {
+    background: #fef2f2 !important;
+    color: #b91c1c !important;
+    border-color: #fecaca !important;
+}
+
+.spa-badge--review,
+.badge.bg-info,
+.badge.bg-primary {
+    background: var(--theme-primary-soft) !important;
+    color: var(--theme-primary) !important;
+    border-color: #bfdbfe !important;
+}
+
+/* ==========================================================================
+   7. TABLES
+   ========================================================================== */
+
+body.ftp-dashboard-layout .table,
+body.org-dashboard-layout .org-data-table,
+body.ap-admin-layout .ap-table-scroll .table,
+body.ftp-dashboard-layout .grid-view table,
+body.org-dashboard-layout .grid-view table {
+    background: var(--card) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .table thead th,
+body.org-dashboard-layout .org-data-table thead th,
+body.ap-admin-layout .ap-table-scroll thead th,
+body.ftp-dashboard-layout .grid-view th {
+    background: var(--bg) !important;
+    color: var(--theme-text-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    border-bottom: 1px solid var(--theme-border) !important;
+}
+
+body.ftp-dashboard-layout .table tbody td,
+body.org-dashboard-layout .org-data-table tbody td,
+body.ap-admin-layout .ap-table-scroll tbody td,
+body.ftp-dashboard-layout .grid-view td {
+    background: var(--card) !important;
+    border-bottom: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+}
+
+body.ftp-dashboard-layout .table tbody tr:hover td,
+body.org-dashboard-layout .org-data-table tbody tr:hover td,
+body.ap-admin-layout .ap-table-scroll tbody tr:hover td {
+    background: var(--bg) !important;
+}
+
+/* ==========================================================================
+   8. FORMS
+   ========================================================================== */
+
+body.ftp-dashboard-layout .form-control,
+body.ftp-dashboard-layout .form-select,
+body.org-dashboard-layout .form-control,
+body.org-dashboard-layout .form-select,
+body.ap-admin-layout .form-control,
+body.ap-admin-layout .form-select,
+.sp-search-bar input,
+.org-search input {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--theme-radius-sm) !important;
+    color: var(--theme-text) !important;
+    box-shadow: none !important;
+}
+
+body.ftp-dashboard-layout .form-control:focus,
+body.ftp-dashboard-layout .form-select:focus,
+body.org-dashboard-layout .form-control:focus,
+body.org-dashboard-layout .form-select:focus,
+body.ap-admin-layout .form-control:focus,
+body.ap-admin-layout .form-select:focus {
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 3px var(--theme-ring-soft) !important;
+    outline: none !important;
+}
+
+body.ftp-dashboard-layout .form-label,
+body.org-dashboard-layout .form-label,
+body.ap-admin-layout .form-label {
+    color: var(--theme-text-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 0.84rem !important;
+}
+
+/* ==========================================================================
+   9. TYPOGRAPHY
+   ========================================================================== */
+
+body.ftp-dashboard-layout h1,
+body.ftp-dashboard-layout h2,
+body.org-dashboard-layout h1,
+body.org-dashboard-layout h2,
+body.ap-admin-layout h1,
+body.ap-admin-layout h2,
+.spa-hero-title,
+.scc-hero-title,
+.org-hero-title,
+.ap-page-title {
+    color: var(--theme-text) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+}
+
+body.ftp-dashboard-layout h3,
+body.ftp-dashboard-layout h4,
+body.org-dashboard-layout h3,
+body.ap-admin-layout h3 {
+    color: var(--theme-text) !important;
+    font-weight: 600 !important;
+}
+
+.text-muted,
+.spa-muted,
+.sp-muted,
+.org-muted {
+    color: var(--theme-muted) !important;
+}
+
+/* ==========================================================================
+   10. HERO / AMBIENT / PAGE BACKGROUNDS — neutralize flash
+   ========================================================================== */
+
+.spa-hero,
+.spa-hero-inner,
+.scc-hero,
+.org-hero,
+.sp-page-hero,
+.student-shell-premium-bg,
+.ftp-ambient,
+.org-ambient {
+    background: var(--theme-bg) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.spa-hero-inner,
+.scc-glass {
+    background: var(--card) !important;
+    border: 1px solid var(--es-card-border) !important;
+    border-radius: var(--es-card-radius) !important;
+    box-shadow: var(--es-card-shadow) !important;
+}
+
+/* Student shell premium — remove mesh gradients */
+body.ftp-dashboard-layout.ftp-student-body {
+    background: var(--theme-bg) !important;
+    background-image: none !important;
+}
+
+body.ftp-dashboard-layout .ftp-content {
+    background: var(--theme-bg) !important;
+}
+
+body.org-dashboard-layout .org-content,
+body.ap-admin-layout .ap-content-wrap {
+    background: var(--theme-bg) !important;
+}
+
+/* ==========================================================================
+   11. KANBAN / ATS COLUMNS
+   ========================================================================== */
+
+.org-col,
+.ap-kanban-col {
+    background: var(--theme-surface-2) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: var(--es-card-radius) !important;
+    backdrop-filter: none !important;
+}
+
+.org-app-card {
+    margin-bottom: 0.65rem !important;
+}
+
+/* ==========================================================================
+   12. DROPDOWNS / MODALS / TOASTS
+   ========================================================================== */
+
+body.ftp-dashboard-layout .dropdown-menu,
+body.org-dashboard-layout .dropdown-menu,
+body.ap-admin-layout .dropdown-menu,
+body.ftp-dashboard-layout .modal-content,
+body.org-dashboard-layout .modal-content,
+body.ap-admin-layout .modal-content {
+    background: var(--card) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: var(--theme-radius-lg) !important;
+    box-shadow: var(--theme-shadow-md) !important;
+    backdrop-filter: none !important;
+}
+
+body.ftp-dashboard-layout .ftp-toast,
+body.org-dashboard-layout .org-toast {
+    background: var(--card) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    box-shadow: var(--theme-shadow-md) !important;
+}
+
+/* ==========================================================================
+   13. PUBLIC SITE (light enterprise)
+   ========================================================================== */
+
+.site-public-navbar {
+    background: var(--card) !important;
+    border-bottom: 1px solid var(--border-strong) !important;
+}
+
+.site-public-navbar__btn--primary,
+.btn-hero--primary {
+    background: var(--es-btn-primary-bg) !important;
+    background-image: none !important;
+    border: 1px solid var(--es-btn-primary-bg) !important;
+    color: var(--btn-primary-text, var(--primary-contrast)) !important;
+    border-radius: var(--es-btn-radius) !important;
+    box-shadow: none !important;
+}
+
+.site-public-navbar__btn--primary:hover,
+.btn-hero--primary:hover {
+    background: var(--es-btn-primary-hover) !important;
+    border-color: var(--es-btn-primary-hover) !important;
+}
+
+.site-public-navbar__btn--ghost,
+.btn-hero--ghost {
+    background: var(--card) !important;
+    border: 1px solid var(--border-strong) !important;
+    color: var(--btn-ghost-text, var(--theme-text)) !important;
+    border-radius: var(--es-btn-radius) !important;
+}
+
+/* Marketplace / position cards */
+.pm-page,
+.pm-hero,
+.pm-hero__overlay,
+.pm-hero__mesh {
+    background: var(--theme-bg) !important;
+    background-image: none !important;
+}
+
+.pm-hero__overlay,
+.pm-hero__mesh,
+.pm-hero__orb {
+    display: none !important;
+}
+
+.pm-opp-card,
+.pm-card {
+    background: var(--card) !important;
+    border: 1px solid var(--es-card-border) !important;
+    border-radius: var(--es-card-radius) !important;
+    box-shadow: var(--es-card-shadow) !important;
+}
+
+/* ==========================================================================
+   14. SUPPORT HUB (remove dark theme influence)
+   ========================================================================== */
+
+.support-hub,
+.support-hub-sidebar,
+.support-hub-thread,
+.support-admin {
+    background: var(--theme-bg) !important;
+}
+
+.support-hub-card,
+.support-ticket-item,
+.support-message-bubble--admin {
+    background: var(--card) !important;
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: var(--es-card-shadow) !important;
+    backdrop-filter: none !important;
+}
+
+/* ==========================================================================
+   15. HOVER STATES — global guardrails
+   ========================================================================== */
+
+body.ftp-dashboard-layout a:hover,
+body.org-dashboard-layout a:hover,
+body.ap-admin-layout a:hover {
+    text-decoration: none !important;
+}
+
+[class*="btn"]:hover,
+[class*="card"]:hover {
+    filter: none !important;
+}
+
+[class*="btn"]:active {
+    transform: none !important;
+}
+
+/* ==========================================================================
+   16. UTILITY CLASSES (optional use in views)
+   ========================================================================== */
+
+.es-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    background: var(--es-btn-primary-bg);
+    color: var(--btn-primary-text, var(--es-btn-primary-color));
+    border: 1px solid var(--es-btn-primary-bg);
+    border-radius: var(--es-btn-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color var(--theme-transition);
+}
+
+.es-btn--primary:hover {
+    background: var(--es-btn-primary-hover);
+    border-color: var(--es-btn-primary-hover);
+    color: var(--btn-primary-text, var(--es-btn-primary-color));
+}
+
+.es-btn--secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    background: var(--es-btn-secondary-bg);
+    color: var(--btn-ghost-text, var(--theme-text));
+    border: 1px solid var(--es-btn-secondary-border);
+    border-radius: var(--es-btn-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color var(--theme-transition);
+}
+
+.es-btn--secondary:hover {
+    background: var(--es-btn-secondary-hover);
+}
+
+.es-btn--soft {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    background: var(--es-btn-soft-bg);
+    color: var(--btn-ghost-text, var(--theme-text));
+    border: 1px solid var(--theme-border);
+    border-radius: var(--es-btn-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color var(--theme-transition);
+}
+
+.es-btn--soft:hover {
+    background: var(--es-btn-soft-hover);
+}
+
+.es-card {
+    background: var(--es-card-bg);
+    border: 1px solid var(--es-card-border);
+    border-radius: var(--es-card-radius);
+    box-shadow: var(--es-card-shadow);
+    padding: 1.25rem;
+}
+
+.es-section {
+    background: var(--theme-surface-2);
+    border-radius: var(--es-card-radius);
+    padding: 1rem;
+}
+
+.es-divider {
+    border: 0;
+    border-top: 1px solid var(--theme-border);
+    margin: 1rem 0;
+}
+
+/* ==========================================================================
+   17. FEATURE PAGE OVERRIDES (applications, command center, profile)
+   ========================================================================== */
+
+.student-applications-scope .spa-page,
+.student-applications-scope .spa-hero,
+.scc-scope .scc-page {
+    background: var(--theme-bg) !important;
+    background-image: none !important;
+}
+
+.student-applications-scope .spa-orb,
+.student-applications-scope .spa-mesh,
+.scc-scope .scc-ambient,
+.scc-scope .scc-mesh {
+    display: none !important;
+}
+
+.student-applications-scope .spa-journey-step.is-active {
+    background: var(--theme-primary-soft) !important;
+    border-color: #bfdbfe !important;
+    color: var(--theme-primary) !important;
+    box-shadow: none !important;
+}
+
+.student-applications-scope .spa-pill,
+.scc-scope .scc-pill {
+    background: var(--card) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text-secondary) !important;
+    backdrop-filter: none !important;
+}
+
+.student-applications-scope .spa-action-card {
+    background: var(--card) !important;
+    border: 1px solid var(--es-card-border) !important;
+    box-shadow: var(--es-card-shadow) !important;
+}
+
+.student-applications-scope .spa-action-card--blue,
+.student-applications-scope .spa-action-card--green,
+.student-applications-scope .spa-action-card--amber {
+    background: var(--card) !important;
+    background-image: none !important;
+}
+
+.student-profile-scope .sp-prof-card,
+.student-profile-scope .sp-prof-stat {
+    background: var(--card) !important;
+    border: 1px solid var(--es-card-border) !important;
+    box-shadow: var(--es-card-shadow) !important;
+    backdrop-filter: none !important;
+}
+
+.student-opportunities-scope .so-filter-chip.is-active {
+    background: var(--theme-primary-soft) !important;
+    color: var(--theme-primary) !important;
+    border-color: #bfdbfe !important;
+}

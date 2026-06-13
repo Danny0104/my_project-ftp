@@ -1,0 +1,346 @@
+/**
+ * Platform-wide button & interactive control contrast.
+ * Loaded last — beats theme-overrides link colors that hid labels on filled buttons.
+ */
+
+/* Prevent gradient-text utilities from leaking into controls */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn,
+[class*="-btn"],
+.es-btn--primary,
+.es-btn--secondary,
+.es-btn--soft {
+    -webkit-text-fill-color: currentColor;
+    background-clip: border-box;
+}
+
+[class*="-btn"] i,
+[class*="-btn"] svg,
+.btn i,
+.btn svg {
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+    opacity: 1;
+}
+
+/* ---- Primary (filled) ---- */
+body.ftp-dashboard-layout a.org-btn.org-btn-primary,
+body.ftp-dashboard-layout a.ftp-btn.ftp-btn-primary,
+body.ftp-dashboard-layout a.sp-btn-primary,
+body.ftp-dashboard-layout a.spa-btn--primary,
+body.ftp-dashboard-layout a.scc-btn--primary,
+body.ftp-dashboard-layout a.sp-prof-btn--primary,
+body.ftp-dashboard-layout a.ap-btn.ap-btn-primary,
+body.ftp-dashboard-layout a.pd-btn-primary,
+body.ftp-dashboard-layout a.sp-om-btn--primary,
+body.ftp-dashboard-layout a.pp-btn--primary,
+body.org-dashboard-layout a.org-btn.org-btn-primary,
+body.org-dashboard-layout a.ap-btn.ap-btn-primary,
+body.ap-admin-layout a.ap-btn.ap-btn-primary,
+.site-public-page a.site-public-navbar__btn--primary,
+.site-public-page a.btn-hero--primary,
+body.ftp-dashboard-layout .btn-primary:not(.btn-link),
+body.org-dashboard-layout .btn-primary:not(.btn-link),
+body.ap-admin-layout .btn-primary:not(.btn-link),
+body.ftp-dashboard-layout button.org-btn.org-btn-primary,
+body.ftp-dashboard-layout button.ftp-btn.ftp-btn-primary,
+body.org-dashboard-layout button.org-btn.org-btn-primary,
+body.org-dashboard-layout button.org-btn.org-btn-primary,
+.sp-btn-primary,
+.sp-btn-apply,
+.spa-btn--primary,
+.scc-btn--primary,
+.ftp-btn-primary,
+.sp-prof-btn--primary,
+.org-btn-primary,
+.ap-btn-primary,
+.pd-btn-primary,
+.sp-om-btn--primary,
+.es-btn--primary {
+    color: var(--btn-primary-text) !important;
+    -webkit-text-fill-color: var(--btn-primary-text) !important;
+}
+
+body.ftp-dashboard-layout a.org-btn.org-btn-primary:hover,
+body.ftp-dashboard-layout a.ftp-btn.ftp-btn-primary:hover,
+body.org-dashboard-layout a.org-btn.org-btn-primary:hover,
+body.org-dashboard-layout a.org-btn.org-btn-primary:focus-visible,
+body.ap-admin-layout a.ap-btn.ap-btn-primary:hover,
+.site-public-page a.site-public-navbar__btn--primary:hover,
+body.ftp-dashboard-layout .btn-primary:not(.btn-link):hover,
+body.org-dashboard-layout .btn-primary:not(.btn-link):hover,
+body.ap-admin-layout .btn-primary:not(.btn-link):hover,
+.sp-btn-primary:hover,
+.org-btn-primary:hover,
+.ap-btn-primary:hover,
+.es-btn--primary:hover {
+    color: var(--btn-primary-text) !important;
+    -webkit-text-fill-color: var(--btn-primary-text) !important;
+}
+
+/* ---- Ghost / outline / secondary ---- */
+body.ftp-dashboard-layout a.org-btn.org-btn-ghost,
+body.ftp-dashboard-layout a.ftp-btn.ftp-btn-outline,
+body.ftp-dashboard-layout a.sp-btn-ghost,
+body.ftp-dashboard-layout a.spa-btn--ghost,
+body.ftp-dashboard-layout a.scc-btn--ghost,
+body.ftp-dashboard-layout a.sp-prof-btn--ghost,
+body.ftp-dashboard-layout a.ap-btn.ap-btn-ghost,
+body.ftp-dashboard-layout a.pd-btn-ghost,
+body.ftp-dashboard-layout a.sp-om-btn--ghost,
+body.org-dashboard-layout a.org-btn.org-btn-ghost,
+body.ap-admin-layout a.ap-btn.ap-btn-ghost,
+.site-public-page a.site-public-navbar__btn--ghost,
+.site-public-page a.btn-hero--ghost,
+body.ftp-dashboard-layout .btn-outline-secondary,
+body.org-dashboard-layout .btn-outline-secondary,
+body.ap-admin-layout .btn-outline-secondary,
+.sp-btn-ghost,
+.spa-btn--ghost,
+.scc-btn--ghost,
+.ftp-btn-outline,
+.sp-prof-btn--ghost,
+.org-btn-ghost,
+.ap-btn-ghost,
+.pd-btn-ghost,
+.sp-om-btn--ghost,
+.es-btn--secondary,
+.es-btn--soft {
+    color: var(--btn-ghost-text) !important;
+    -webkit-text-fill-color: var(--btn-ghost-text) !important;
+}
+
+body.ftp-dashboard-layout a.org-btn.org-btn-ghost:hover,
+body.org-dashboard-layout a.org-btn.org-btn-ghost:hover,
+body.ftp-dashboard-layout a.ftp-btn.ftp-btn-outline:hover,
+.org-btn-ghost:hover,
+.ap-btn-ghost:hover,
+.es-btn--secondary:hover,
+.es-btn--soft:hover,
+body.ftp-dashboard-layout .btn-outline-secondary:hover,
+body.org-dashboard-layout .btn-outline-secondary:hover {
+    color: var(--btn-ghost-text) !important;
+    -webkit-text-fill-color: var(--btn-ghost-text) !important;
+}
+
+/* ---- Semantic variants ---- */
+.ap-btn-success,
+.btn-success:not(.btn-link) {
+    background: var(--btn-success-bg) !important;
+    border-color: var(--btn-success-bg) !important;
+    color: var(--btn-success-text) !important;
+    -webkit-text-fill-color: var(--btn-success-text) !important;
+}
+
+.ap-btn-danger,
+.btn-danger:not(.btn-link),
+.btn-error:not(.btn-link) {
+    background: var(--btn-danger-bg) !important;
+    border-color: var(--btn-danger-bg) !important;
+    color: var(--btn-danger-text) !important;
+    -webkit-text-fill-color: var(--btn-danger-text) !important;
+}
+
+.btn-warning:not(.btn-link) {
+    background: var(--btn-warning-bg) !important;
+    border-color: var(--btn-warning-bg) !important;
+    color: var(--btn-warning-text) !important;
+    -webkit-text-fill-color: var(--btn-warning-text) !important;
+}
+
+.btn-secondary:not(.btn-link) {
+    background: var(--es-btn-soft-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--btn-secondary-text) !important;
+    -webkit-text-fill-color: var(--btn-secondary-text) !important;
+}
+
+/* ---- Disabled / applied ---- */
+.sp-btn-applied,
+.sp-btn-primary:disabled,
+.spa-btn--primary:disabled,
+.org-btn:disabled,
+.ftp-btn:disabled,
+.ap-btn:disabled,
+[class*="-btn"]:disabled,
+[class*="-btn"][aria-disabled="true"] {
+    color: var(--btn-muted-text) !important;
+    -webkit-text-fill-color: var(--btn-muted-text) !important;
+    opacity: 1 !important;
+}
+
+/* ---- Loading states keep label visible ---- */
+[class*="-btn"].is-loading,
+.btn.is-loading,
+.pp-btn.is-loading {
+    color: var(--btn-primary-text) !important;
+    -webkit-text-fill-color: var(--btn-primary-text) !important;
+    opacity: 1 !important;
+}
+
+.org-btn-ghost.is-loading,
+.ftp-btn-outline.is-loading,
+.sp-btn-ghost.is-loading,
+.btn-outline-secondary.is-loading {
+    color: var(--btn-ghost-text) !important;
+    -webkit-text-fill-color: var(--btn-ghost-text) !important;
+}
+
+/* ---- Modals / dialogs ---- */
+.modal .btn-primary:not(.btn-link),
+.modal .org-btn-primary,
+.org-modal .org-btn-primary {
+    color: var(--btn-primary-text) !important;
+    -webkit-text-fill-color: var(--btn-primary-text) !important;
+}
+
+.modal .btn-outline-secondary,
+.modal .org-btn-ghost,
+.org-modal .org-btn-ghost {
+    color: var(--btn-ghost-text) !important;
+    -webkit-text-fill-color: var(--btn-ghost-text) !important;
+}
+
+/* ---- Badges & status pills ---- */
+.badge,
+.ftp-badge,
+.org-pill,
+.sp-badge,
+.ap-badge,
+.spa-status,
+.pd-badge {
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+}
+
+.ftp-badge.primary,
+.badge.bg-primary,
+.badge.text-bg-primary {
+    background: var(--theme-primary-soft) !important;
+    color: var(--theme-primary) !important;
+    -webkit-text-fill-color: var(--theme-primary) !important;
+}
+
+.badge.bg-success,
+.badge.text-bg-success {
+    background: color-mix(in srgb, var(--btn-success-bg) 18%, transparent) !important;
+    color: var(--btn-success-bg) !important;
+    -webkit-text-fill-color: var(--btn-success-bg) !important;
+}
+
+.badge.bg-warning,
+.badge.text-bg-warning {
+    background: color-mix(in srgb, var(--btn-warning-bg) 18%, transparent) !important;
+    color: var(--btn-warning-bg) !important;
+    -webkit-text-fill-color: var(--btn-warning-bg) !important;
+}
+
+.badge.bg-danger,
+.badge.text-bg-danger {
+    background: color-mix(in srgb, var(--btn-danger-bg) 18%, transparent) !important;
+    color: var(--btn-danger-bg) !important;
+    -webkit-text-fill-color: var(--btn-danger-bg) !important;
+}
+
+.org-pill {
+    color: var(--theme-text) !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+}
+
+.org-pill.is-verified {
+    color: var(--theme-success) !important;
+    -webkit-text-fill-color: var(--theme-success) !important;
+}
+
+/* ---- Tabs ---- */
+.nav-tabs .nav-link,
+.org-tab,
+.sp-tab {
+    color: var(--theme-text-secondary) !important;
+    -webkit-text-fill-color: var(--theme-text-secondary) !important;
+}
+
+.nav-tabs .nav-link.active,
+.org-tab.is-active,
+.sp-tab.is-active {
+    color: var(--theme-primary) !important;
+    -webkit-text-fill-color: var(--theme-primary) !important;
+}
+
+/* Filled tab/chip controls (anchor tags with primary background) */
+.org-view-tabs a.is-active,
+.sp-om-chip.is-active,
+.sp-om-timeline-step.is-active {
+    color: var(--btn-primary-text) !important;
+    -webkit-text-fill-color: var(--btn-primary-text) !important;
+}
+
+/* ---- Dropdown items (not buttons) ---- */
+.dropdown-menu,
+.dropdown-item {
+    color: var(--theme-text) !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item.active {
+    color: var(--theme-text) !important;
+    -webkit-text-fill-color: var(--theme-text) !important;
+}
+
+/* ---- Alerts ---- */
+.alert {
+    color: var(--theme-text) !important;
+}
+
+.alert-success {
+    background: color-mix(in srgb, var(--btn-success-bg) 12%, var(--theme-surface)) !important;
+    border-color: color-mix(in srgb, var(--btn-success-bg) 35%, transparent) !important;
+    color: var(--theme-text) !important;
+}
+
+.alert-warning {
+    background: color-mix(in srgb, var(--btn-warning-bg) 12%, var(--theme-surface)) !important;
+    border-color: color-mix(in srgb, var(--btn-warning-bg) 35%, transparent) !important;
+    color: var(--theme-text) !important;
+}
+
+.alert-danger {
+    background: color-mix(in srgb, var(--btn-danger-bg) 12%, var(--theme-surface)) !important;
+    border-color: color-mix(in srgb, var(--btn-danger-bg) 35%, transparent) !important;
+    color: var(--theme-text) !important;
+}
+
+/* ---- Responsive: never clip labels ---- */
+[class*="-btn"],
+.btn {
+    min-height: 2.25rem;
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    line-height: 1.25;
+}
+
+.org-page-actions [class*="-btn"],
+.ftp-featured-actions [class*="-btn"] {
+    flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+    .org-page-actions,
+    .org-hero-inner .org-page-actions {
+        width: 100%;
+    }
+
+    .org-page-actions [class*="-btn"],
+    .org-hero-inner .org-page-actions [class*="-btn"] {
+        flex: 1 1 auto;
+        justify-content: center;
+        text-align: center;
+    }
+}

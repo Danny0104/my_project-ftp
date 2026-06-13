@@ -1,0 +1,378 @@
+/**
+ * Field Training Platform — Premium glass cards (project-wide)
+ * Matches homepage feature-card design language
+ */
+
+:root {
+    --pc-primary: #2563eb;
+    --pc-accent: #38bdf8;
+    --pc-dark: #0f172a;
+    --pc-bg: #f8fafc;
+    --pc-glass: rgba(255, 255, 255, 0.78);
+    --pc-glass-solid: rgba(255, 255, 255, 0.92);
+    --pc-glass-border: rgba(255, 255, 255, 0.9);
+    --pc-border: rgba(226, 232, 240, 0.9);
+    --pc-shadow: 0 4px 24px rgba(15, 23, 42, 0.07);
+    --pc-shadow-hover: 0 20px 48px rgba(37, 99, 235, 0.16);
+    --pc-radius: 20px;
+    --pc-radius-sm: 16px;
+    --pc-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Shared card selectors ─── */
+.stat-card,
+.position-card,
+.signup-card,
+.modern-card:not(.completion-card),
+.stat-card-modern,
+.notification-stat-card,
+.card.shadow-sm,
+.card.border-0.rounded-3,
+.ftp-stat-card,
+.ftp-featured-card,
+.ftp-opp-card,
+.ftp-track-card,
+.ftp-deadline-card,
+.student-card,
+.info-card,
+.dashboard-card,
+.heslb-dashboard-card {
+    position: relative;
+    border-radius: var(--pc-radius) !important;
+    background: var(--pc-glass) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--pc-glass-border) !important;
+    box-shadow: var(--pc-shadow) !important;
+    transition:
+        transform var(--pc-transition),
+        box-shadow var(--pc-transition),
+        border-color var(--pc-transition),
+        background var(--pc-transition) !important;
+    overflow: hidden;
+}
+
+/* Top gradient accent on hover */
+.stat-card::before,
+.position-card::before,
+.signup-card::before,
+.modern-card:not(.completion-card)::before,
+.stat-card-modern::before,
+.notification-stat-card::before,
+.card.shadow-sm::before,
+.card.border-0.rounded-3::before,
+.ftp-stat-card::before,
+.ftp-featured-card::before,
+.ftp-opp-card::before,
+.ftp-track-card::before,
+.ftp-deadline-card::before,
+.student-card::before,
+.info-card::before,
+.dashboard-card::before,
+.heslb-dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pc-primary), var(--pc-accent));
+    opacity: 0;
+    transition: opacity var(--pc-transition);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Inner glow */
+.stat-card::after,
+.position-card::after,
+.signup-card::after,
+.modern-card:not(.completion-card)::after,
+.stat-card-modern::after,
+.notification-stat-card::after,
+.card.shadow-sm::after,
+.card.border-0.rounded-3::after,
+.ftp-stat-card::after,
+.ftp-featured-card::after,
+.ftp-opp-card::after,
+.ftp-track-card::after,
+.student-card::after,
+.info-card::after {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.1) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity var(--pc-transition);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stat-card:hover,
+.position-card:hover,
+.signup-card:hover,
+.modern-card:not(.completion-card):hover,
+.stat-card-modern:hover,
+.notification-stat-card:hover,
+.card.shadow-sm:hover,
+.card.border-0.rounded-3:hover,
+.ftp-stat-card:hover,
+.ftp-featured-card:hover,
+.ftp-opp-card:hover,
+.ftp-track-card:hover,
+.ftp-deadline-card:hover,
+.student-card:hover,
+.info-card:hover,
+.dashboard-card:hover,
+.heslb-dashboard-card:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    box-shadow: var(--pc-shadow-hover) !important;
+    border-color: rgba(37, 99, 235, 0.22) !important;
+    background: var(--pc-glass-solid) !important;
+}
+
+.stat-card:hover::before,
+.position-card:hover::before,
+.signup-card:hover::before,
+.modern-card:not(.completion-card):hover::before,
+.stat-card-modern:hover::before,
+.notification-stat-card:hover::before,
+.card.shadow-sm:hover::before,
+.card.border-0.rounded-3:hover::before,
+.ftp-stat-card:hover::before,
+.ftp-featured-card:hover::before,
+.ftp-opp-card:hover::before,
+.ftp-track-card:hover::before,
+.ftp-deadline-card:hover::before,
+.student-card:hover::before,
+.info-card:hover::before,
+.dashboard-card:hover::before,
+.heslb-dashboard-card:hover::before {
+    opacity: 1;
+}
+
+.stat-card:hover::after,
+.position-card:hover::after,
+.signup-card:hover::after,
+.modern-card:not(.completion-card):hover::after,
+.stat-card-modern:hover::after,
+.notification-stat-card:hover::after,
+.card.shadow-sm:hover::after,
+.card.border-0.rounded-3:hover::after,
+.ftp-stat-card:hover::after,
+.ftp-featured-card:hover::after,
+.ftp-opp-card:hover::after,
+.ftp-track-card:hover::after,
+.student-card:hover::after,
+.info-card:hover::after {
+    opacity: 1;
+}
+
+/* Keep content above pseudo elements */
+.stat-card > *,
+.position-card > *,
+.modern-card:not(.completion-card) > *,
+.stat-card-modern > *,
+.notification-stat-card > *,
+.card.shadow-sm > *,
+.card.border-0.rounded-3 > *,
+.ftp-stat-card > *,
+.ftp-featured-card > *,
+.ftp-opp-card > *,
+.ftp-track-card > *,
+.ftp-deadline-card > *,
+.student-card > *,
+.info-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Homepage stats ─── */
+.stat-card {
+    text-align: center;
+    padding: 30px !important;
+    margin-bottom: 30px;
+}
+
+.stat-card .stat-number {
+    transition: color var(--pc-transition);
+}
+
+.stat-card:hover .stat-number {
+    color: var(--pc-primary) !important;
+}
+
+/* ─── Position cards ─── */
+.position-card {
+    padding: 1.5rem 1.75rem !important;
+    margin-bottom: 1.5rem;
+    height: 100%;
+}
+
+/* ─── Bootstrap cards (applications, notifications) ─── */
+.card.shadow-sm .card-header,
+.card.border-0.rounded-3 .card-header {
+    background: rgba(248, 250, 252, 0.85) !important;
+    border-bottom: 1px solid var(--pc-border) !important;
+    backdrop-filter: blur(8px);
+}
+
+.card.shadow-sm .card-body,
+.card.border-0.rounded-3 .card-body {
+    background: transparent;
+}
+
+/* ─── Modern profile cards ─── */
+.modern-card:not(.completion-card) .card-header-modern {
+    background: linear-gradient(135deg, var(--pc-primary) 0%, var(--pc-accent) 100%) !important;
+    border-bottom: none;
+}
+
+.modern-card:not(.completion-card) .card-body-modern {
+    background: transparent;
+}
+
+.info-item {
+    background: rgba(248, 250, 252, 0.85) !important;
+    border: 1px solid var(--pc-border);
+    transition: all var(--pc-transition);
+}
+
+.info-item:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    transform: translateX(4px);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: var(--pc-shadow);
+}
+
+.info-icon,
+.document-icon,
+.info-card-icon {
+    transition: transform var(--pc-transition), box-shadow var(--pc-transition);
+}
+
+.info-item:hover .info-icon,
+.document-item-modern:hover .document-icon,
+.info-card:hover .info-card-icon {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* Colored stat tiles — keep gradients, add glass depth */
+.stat-card-modern {
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
+}
+
+.stat-card-modern:hover {
+    transform: translateY(-8px) scale(1.03) !important;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* ─── Student dashboard cards ─── */
+.ftp-stat-card {
+    border-radius: var(--pc-radius-sm) !important;
+}
+
+.ftp-opp-card:hover {
+    transform: translateY(-10px) scale(1.01) !important;
+}
+
+.ftp-deadline-card::before {
+    border-radius: var(--pc-radius-sm) var(--pc-radius-sm) 0 0;
+}
+
+/* ─── Backend admin cards ─── */
+.student-card::before {
+    opacity: 1;
+    height: 4px;
+}
+
+.info-card-icon {
+    background: linear-gradient(135deg, var(--pc-primary), var(--pc-accent)) !important;
+}
+
+/* ─── Signup card ─── */
+.signup-card {
+    padding: 2rem !important;
+}
+
+/* ─── Feature cards (homepage) — align with system, keep custom glow element ─── */
+.feature-card {
+    border-radius: var(--pc-radius) !important;
+    background: var(--pc-glass) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--pc-glass-border) !important;
+    box-shadow: var(--pc-shadow) !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: var(--pc-shadow-hover) !important;
+}
+
+/* ─── Section backgrounds for card areas ─── */
+.stats-section,
+.positions-section {
+    position: relative;
+}
+
+.stats-section::before,
+.positions-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 80% 50%, rgba(56, 189, 248, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stats-section > .container,
+.positions-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    .stat-card,
+    .position-card,
+    .feature-card,
+    .modern-card,
+    .stat-card-modern,
+    .card,
+    .ftp-opp-card,
+    .student-card,
+    .info-card {
+        transition: none !important;
+    }
+
+    .stat-card:hover,
+    .position-card:hover,
+    .feature-card:hover,
+    .modern-card:hover,
+    .stat-card-modern:hover,
+    .card:hover,
+    .ftp-opp-card:hover,
+    .student-card:hover,
+    .info-card:hover {
+        transform: none !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .stat-card,
+    .position-card,
+    .feature-card {
+        transform: none !important;
+    }
+
+    .stat-card:hover,
+    .position-card:hover,
+    .feature-card:hover {
+        transform: translateY(-4px) !important;
+    }
+}
