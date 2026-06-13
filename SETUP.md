@@ -178,6 +178,8 @@ php yii serve --port=8080
 
 See `documentation/Developer_Guide.md` §10 for the full deployment checklist.
 
+**Railway:** step-by-step guide in [`RAILWAY.md`](RAILWAY.md).
+
 ## 📞 **Support**
 
 For technical support or questions:

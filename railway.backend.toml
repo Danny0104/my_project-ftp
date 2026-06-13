@@ -1,0 +1,13 @@
+# Railway config for the BACKEND (admin) service.
+# In Railway: Service → Settings → Config-as-code → set path to railway.backend.toml
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "backend/Dockerfile"
+watchPatterns = ["backend/**", "common/**", "console/**", "composer.json", "composer.lock", "environments/**", "docker/**"]
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

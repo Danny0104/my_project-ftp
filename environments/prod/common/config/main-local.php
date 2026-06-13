@@ -1,12 +1,38 @@
 <?php
 
+/**
+ * Resolve DB connection settings from DB_* or Railway MySQL plugin variables.
+ */
+$dbDsn = getenv('DB_DSN') ?: '';
+$dbUser = getenv('DB_USER') ?: '';
+$dbPass = getenv('DB_PASS') ?: '';
+
+if ($dbDsn === '') {
+    $mysqlHost = getenv('MYSQLHOST') ?: getenv('MYSQL_HOST') ?: '';
+    if ($mysqlHost !== '') {
+        $mysqlPort = getenv('MYSQLPORT') ?: getenv('MYSQL_PORT') ?: '3306';
+        $mysqlDb = getenv('MYSQLDATABASE') ?: getenv('MYSQL_DATABASE') ?: 'railway';
+        $dbDsn = "mysql:host={$mysqlHost};port={$mysqlPort};dbname={$mysqlDb}";
+    } else {
+        $dbDsn = 'mysql:host=localhost;dbname=yii2advanced';
+    }
+}
+
+if ($dbUser === '') {
+    $dbUser = getenv('MYSQLUSER') ?: getenv('MYSQL_USER') ?: 'root';
+}
+
+if ($dbPass === '') {
+    $dbPass = getenv('MYSQLPASSWORD') ?: getenv('MYSQL_PASSWORD') ?: '';
+}
+
 return [
     'components' => [
         'db' => [
             'class' => \yii\db\Connection::class,
-            'dsn' => getenv('DB_DSN') ?: 'mysql:host=localhost;dbname=yii2advanced',
-            'username' => getenv('DB_USER') ?: 'root',
-            'password' => getenv('DB_PASS') ?: '',
+            'dsn' => $dbDsn,
+            'username' => $dbUser,
+            'password' => $dbPass,
             'charset' => 'utf8mb4',
             'enableSchemaCache' => true,
             'schemaCacheDuration' => 3600,

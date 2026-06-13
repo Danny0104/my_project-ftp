@@ -7,7 +7,7 @@ const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
-const PORT = process.env.CHAT_PORT || 3001;
+const PORT = process.env.PORT || process.env.CHAT_PORT || 3001;
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));

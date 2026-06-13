@@ -1,0 +1,32 @@
+vendor/
+node_modules/
+.git/
+.github/
+
+# Runtime & generated
+backend/runtime/
+frontend/runtime/
+console/runtime/
+common/runtime/
+backend/web/assets/
+frontend/web/assets/
+frontend/web/uploads/
+
+# Local secrets
+.env
+.env.local
+.env.*.local
+
+# IDE & OS
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
+
+# Docs/tests not needed in image
+documentation/
+docs/
+vagrant/
+*.md
+!README.md

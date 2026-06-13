@@ -1,0 +1,13 @@
+# Railway config for the FRONTEND service.
+# In Railway: Service → Settings → Config-as-code → set path to railway.frontend.toml
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "frontend/Dockerfile"
+watchPatterns = ["frontend/**", "common/**", "console/**", "composer.json", "composer.lock", "environments/**", "docker/**"]
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
